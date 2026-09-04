@@ -1,1 +1,111 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Missing Data — Van Mutundo</title><link rel="stylesheet" href="../style.css"></head><body><main class="site"><header><a href="../index.html">Van Mutundo</a><nav><a href="../index.html">Home</a><a href="../projects/index.html">Projects</a><a href="index.html">Notes</a><a href="../cv.html">CV</a></nav></header><article><p class="kicker">NOTE</p><h1>Missing Data</h1><p class="lead">A working note on missing geophysical coverage, data boundaries, and the danger of allowing acquisition artifacts to become predictive features.</p><p>This is a working note. The site is intended to record ideas, experiments, questions, and conclusions as they develop rather than present only polished final results.</p><p><a href="index.html">← Back to notes</a></p></article></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Missing Data — Van Mutundo</title>
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.5/dist/katex.min.css" integrity="sha384-2dNi/m6JtSiviznrOIZ5fTiZ5As0In2QwkuXSgoqcQtCNplvJAbt+jveeN+8en73" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.5/dist/katex.min.js" integrity="sha384-TTF8eEsEKInX2meLzP5V1z/npGYIElXYGksx93f0qBZHu6IL3PdzVB8objytx+TR" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.5/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+	<style>
+		.math-display {
+			max-width: 100%;
+			margin: 1.25rem 0;
+			overflow-x: auto;
+			overflow-y: hidden;
+			padding: .25rem 0;
+			-webkit-overflow-scrolling: touch;
+		}
+		.math-display .katex-display { margin: 0; text-align: left; }
+		.math-display .katex { white-space: nowrap; }
+		@media (max-width: 650px) {
+			.math-display { margin: 1rem -2px; }
+			.math-display .katex { font-size: .94em; }
+		}
+	</style>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			renderMathInElement(document.querySelector("article"), {
+				delimiters: [
+					{left: "$$", right: "$$", display: true},
+					{left: "\\(", right: "\\)", display: false},
+					{left: "\\[", right: "\\]", display: true}
+				],
+				throwOnError: false,
+				strict: "ignore"
+			});
+		});
+	</script>
+</head>
+<body>
+<main class="site">
+	<header>
+		<a href="../index.html">Van Mutundo</a>
+		<nav>
+			<a href="../index.html">Home</a>
+			<a href="../projects/index.html">Projects</a>
+			<a href="index.html">Notes</a>
+			<a href="../cv.html">CV</a>
+		</nav>
+	</header>
+	<article>
+		<p class="kicker">NOTE</p>
+		<h1>Missing Data</h1>
+		<p class="lead">A working note on missing geophysical coverage, data boundaries, and the danger of allowing acquisition artifacts to become predictive features.</p>
+		<p>This is a working note. The site is intended to record ideas, experiments, questions, and conclusions as they develop rather than present only polished final results.</p>
+
+		<section>
+			<h2>Missingness and the Observation Process</h2>
+			<p>A recurring issue in the prospectivity workflow is the treatment of missing values. I initially treated missingness primarily as a preprocessing problem: observations with incomplete predictor values either had to be removed or the missing values had to be estimated. During the spatial analysis, however, it became clear that this interpretation is not always appropriate.</p>
+
+			<p>For a geospatial dataset, the observed data are not simply a representation of the physical system. They are also a representation of the <strong>observation process</strong>. The availability of a geological, structural, or geophysical variable can depend on where surveys were conducted, how the underlying feature was mapped, the resolution of the source dataset, historical exploration activity, or limitations in geological interpretation.</p>
+
+			<p>This distinction is particularly important for distance-based predictors. Suppose the variable</p>
+
+			<div class="math-display">\[
+			D_f(x) = \text{distance from location } x \text{ to the nearest mapped fault}
+			\]</div>
+
+			<p>is unavailable at some locations. A missing value does not imply \(D_f(x) = 0\), nor does it imply that \(D_f(x)\) is equal to the mean distance observed elsewhere. These represent different statements about the physical system.</p>
+
+			<p>A measured zero means that the observation lies on the mapped feature: \(D_f(x) = 0\). A missing value means that the value of \(D_f(x)\) has not been established in the available data. These two states therefore should not be treated as equivalent.</p>
+
+			<p>The same problem occurs when a predictor is only available over part of a geological domain. If observations beyond a particular spatial extent have systematically missing structural information, conventional imputation can create an artificial continuation of the observed relationship. For example, if the available data suggest that mineralization probability declines with increasing fault distance, imputing missing distances based on the observed distribution implicitly assumes that the same structural relationship applies in the unobserved area.</p>
+
+			<p>That assumption may be precisely what the spatial analysis is supposed to test.</p>
+
+			<p>The issue can be expressed more formally by distinguishing the physical variable from its observation indicator. Let</p>
+
+			<p>\(X_j(x)\) denote the true, potentially unobserved value of predictor \(j\) at location \(x\), and let</p>
+
+			<div class="math-display">\[
+			R_j(x) =
+			\begin{cases}
+			1, & \text{if } X_j(x) \text{ is observed}, \\
+			0, & \text{if } X_j(x) \text{ is missing}.
+			\end{cases}
+			\]</div>
+
+			<p>The dataset therefore contains information about both \(X_j(x)\) and, potentially, the spatial distribution of \(R_j(x)\). If \(P(R_j(x)=1)\) varies systematically with location, tectonic domain, geological setting, or accessibility, then the missingness pattern itself contains information about the observation process.</p>
+
+			<p>This does <strong>not</strong> mean that every missing value should automatically be introduced into the prospectivity model as a predictor. That would require additional justification. The more immediate methodological requirement is to investigate whether missingness is spatially structured and whether it is concentrated in particular domains or portions of the study area.</p>
+
+			<p>This is especially relevant to spatial validation. If a predictor is well observed in the training regions but poorly observed in a withheld region, then the model's apparent predictive performance may partly reflect differences in data availability rather than differences in geological relationships.</p>
+
+			<p>The resulting principle for this project is therefore:</p>
+
+			<blockquote><strong>Missingness should be investigated before it is treated as a nuisance.</strong></blockquote>
+
+			<p>The dataset should be understood as having two components:</p>
+
+			<p><strong>Observed geological information + the process through which that information became observed.</strong></p>
+
+			<p>This distinction is important because the objective is not simply to produce a complete numerical matrix. The objective is to infer geological relationships that can be transferred to parts of the Copperbelt where the observation conditions may differ from those represented in the training data.</p>
+		</section>
+
+		<p><a href="index.html">← Back to notes</a></p>
+	</article>
+</main>
+</body>
+</html>
