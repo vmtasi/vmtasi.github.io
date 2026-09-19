@@ -1,37 +1,102 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Model Knowledge — Van Mutundo</title>
-	<link rel="stylesheet" href="../style.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Model Knowledge — Van Mutundo</title>
+        <link rel="stylesheet" href="../style.css">
+        <style>
+                .eq {
+                        text-align: center;
+                        font-family: ui-monospace, "SF Mono", Menlo, monospace;
+                        font-size: 17px;
+                        margin: 18px 0;
+                        color: var(--text);
+                }
+                .eq-inline {
+                        font-family: ui-monospace, "SF Mono", Menlo, monospace;
+                        font-size: 0.95em;
+                }
+        </style>
 </head>
 <body>
 <main class="site">
-	<header>
-		<a href="../index.html">Van Mutundo</a>
-		<nav>
-			<a href="../index.html">Home</a>
-			<a href="../projects/index.html">Projects</a>
-			<a href="index.html">Notes</a>
-			<a href="../cv.html">CV</a>
-		</nav>
-	</header>
-	<article>
-		<p class="kicker">NOTE</p>
-		<h1>Model Knowledge</h1>
-		<p class="lead">A note on the difference between what a model learns from data and what we assume about the world before modelling.</p>
-		<p>This is a working note. The site is intended to record ideas, experiments, questions, and conclusions as they develop rather than present only polished final results.</p>
-		<p><a href="index.html">← Back to notes</a></p>
-	</article>
-<footer class="site-footer">
-    <div class="contact-line">Van Tasi | <a href="mailto:vanmutundo@gmail.com">vanmutundo@gmail.com</a></div>
-    <div class="footer-links">
-      <a href="https://github.com/vmtasi" target="_blank" rel="noreferrer">GitHub</a>
-      <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-      <a href="../cv.html">CV</a>
-    </div>
-	</footer>
+        <header>
+                <a href="../index.html">Van Mutundo</a>
+                <nav>
+                        <a href="../index.html">Home</a>
+                        <a href="../projects/index.html">Projects</a>
+                        <a href="index.html">Notes</a>
+                        <a href="../cv.html">CV</a>
+                </nav>
+        </header>
+        <article>
+                <p class="kicker">NOTE</p>
+                <h1>Model Knowledge</h1>
+                <p class="lead">A note on the difference between what a model learns from data and what we assume about the world before modelling.</p>
+
+                <p>I've been fitting hierarchical Bayesian models to Cu-Co prospectivity data in the Copperbelt, and I keep running into the same issue in a slightly different form. I'll look at a posterior summary, see a coefficient, and think I've learned something about the geology. Then I'll step back and ask where that number actually came from. Often, it came from me.</p>
+
+                <p>Not entirely. The data contributes. But the data enters a model that was specified before it arrived. Choosing a logistic link, choosing a quadratic term for distance, choosing which domains to distinguish, choosing where the fold boundaries go: all of this happens before the sampler runs, and none of it is tested by the sampler. The posterior is a statement about parameters, conditional on all of those choices.</p>
+
+                <p>I find it useful to sort the contents of a fitted model into three categories. The split isn't perfect, but it's clarifying.</p>
+
+                <p><strong>Observations</strong> are the things the data constrains directly. The range of a covariate. The number of positive and negative cases. Which lithologies appear where. These change when the data changes, and they respond to evidence.</p>
+
+                <p><strong>Estimates</strong> are the things the model produces, conditional on everything else. Coefficients. Predictions. Turning points. Posterior intervals. These have real uncertainty attached to them, and they depend entirely on the specification. A coefficient with a narrow credible interval from a misspecified model is a precise estimate of something, but not necessarily of what you wanted.</p>
+
+                <p><strong>Choices</strong> are the premises that entered before fitting and are not questioned by the fit. Predictors, priors, functional forms, domain definitions, fold definitions. These are arguments, not findings. They belong in the scientific text, not just in the code.</p>
+
+                <p>The first category is small. The second is what gets reported. The third is where most of the interesting scientific content lives, and it is usually the least visible.</p>
+
+                <h2>A specific case from the Copperbelt</h2>
+
+                <p>I have a distance-to-fault variable entered as a quadratic in the standardized predictor <span class="eq-inline">z</span>:</p>
+
+                <p class="eq">η(z) = α + β₁z + β₂z²</p>
+
+                <p>The turning point is at</p>
+
+                <p class="eq">z* = −β₁ / (2β₂)</p>
+
+                <p>It is tempting to convert that back into kilometres and call it the preferred distance to faults. But <span class="eq-inline">z*</span> is a ratio of two uncertain quantities. When <span class="eq-inline">β₂</span> approaches zero, the ratio becomes unstable, and its posterior distribution develops heavy tails even when the posterior on <span class="eq-inline">β₂</span> is well behaved. A finite posterior median does not by itself mean a meaningful turning point exists. It means the arithmetic produced a number.</p>
+
+                <p>To decide whether the turning point means something, I need several things at once. Is <span class="eq-inline">β₂</span> credibly away from zero? Does <span class="eq-inline">z*</span> fall inside the empirical range of the predictor? Does the turning point persist across folds? Does the posterior-mean response curve show a stable feature, or does the feature exist only in the median of the ratio? Those are separate questions, and the last one is not answerable inside the model at all. It requires knowing whether there is a geological reason for a turning point to be there.</p>
+
+                <h2>Precision</h2>
+
+                <p>A posterior summary looks authoritative. A coefficient might be reported as</p>
+
+                <p class="eq">β = 0.83,  95% CrI = [0.61, 1.04]</p>
+
+                <p>Everything about the presentation suggests structure. But the interval describes uncertainty conditional on the model. It does not tell me whether the model is correctly specified. A narrow interval from a misspecified model is a narrow interval on the wrong quantity. Precision is not accuracy.</p>
+
+                <h2>Spatial data</h2>
+
+                <p>Two observations a few hundred metres apart are not two independent pieces of evidence. They may reflect the same underlying structure, the same sampling history, the same unmeasured process. The nominal sample size of a spatially autocorrelated dataset is larger than the information content of that dataset, though by how much depends on the dependence structure and the model.</p>
+
+                <p>This interacts with priors in a way that is easy to miss. A prior that would be weakly informative under independence can be substantially informative when the effective sample size is much smaller than the row count. The posterior summary reflects the combination, so it can be hard to see afterward how much of the posterior came from the prior.</p>
+
+                <p>Evaluation has the same problem. Random train-test splits put nearby observations on both sides of the boundary, and a model can then perform well by interpolating to locations it has effectively already seen. Spatial block cross-validation asks a different question: does what was learned in one place transfer to another? For a prospectivity model, that is the question that matters.</p>
+
+                <h2>What was never observed</h2>
+
+                <p>Historical exploration is not a random sample of the crust. Some regions were surveyed for decades; others almost not at all. If the training data under-represents a region because nobody went there, the absence of records cannot be read as evidence of absence. The model has no way to distinguish "nothing is there" from "nobody looked."</p>
+
+                <p>I don't have a clean solution to this. It is a property of the data, and no amount of Bayesian care inside the model recovers information that was never collected.</p>
+
+                <h2>What this changes in practice</h2>
+
+                <p>The question I keep coming back to is not how to remove assumptions. It's which assumptions the conclusion actually depends on.</p>
+
+                <p>Sensitivity analysis answers that directly. Change the prior, change the functional form, change the fold definition, refit. If the conclusion holds, the assumption was inert for that conclusion. If it moves, the assumption is doing work, and the argument should say so.</p>
+
+                <p>A posterior interval is calculated under the assumptions being tested. A sensitivity analysis is a test of the assumptions. They are different instruments for different jobs, and I find myself relying on the second one more than I used to.</p>
+
+                <p>When I look at a prediction, I want to see what the model would have said before the data arrived, what changed after, and which assumptions produced the difference. The rest of the output, the interval, the diagnostic, the convergence check, describes the model. The separation describes what actually got learned.</p>
+
+                <p><a href="index.html">← Back to notes</a></p>
+        </article>
 </main>
 </body>
 </html>
