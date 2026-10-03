@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Missing Data — Van Mutundo</title>
+	<link rel="stylesheet" href="../../style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.5/dist/katex.min.css" integrity="sha384-2dNi/m6JtSiviznrOIZ5fTiZ5As0In2QwkuXSgoqcQtCNplvJAbt+jveeN+8en73" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.5/dist/katex.min.js" integrity="sha384-TTF8eEsEKInX2meLzP5V1z/npGYIElXYGksx93f0qBZHu6IL3PdzVB8objytx+TR" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.5/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+	<style>
+		.math-display {
+			max-width: 100%;
+			margin: 1.25rem 0;
+			overflow-x: auto;
+			overflow-y: hidden;
+			padding: .25rem 0;
+			-webkit-overflow-scrolling: touch;
+		}
+		.math-display .katex-display { margin: 0; text-align: left; }
+		.math-display .katex { white-space: nowrap; }
+		@media (max-width: 650px) {
+			.math-display { margin: 1rem -2px; }
+			.math-display .katex { font-size: .94em; }
+		}
+	</style>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			renderMathInElement(document.querySelector("article"), {
+				delimiters: [
+					{left: "$$", right: "$$", display: true},
+					{left: "\\(", right: "\\)", display: false},
+					{left: "\\[", right: "\\]", display: true}
+				],
+				throwOnError: false,
+				strict: "ignore"
+			});
+		});
+	</script>
+</head>
+<body>
+<main class="site">
+	<header>
+		<a href="../../index.html">Van Mutundo</a>
+		<nav>
+			<a href="../../index.html">Home</a>
+			<a href="../../projects/index.html">Projects</a>
+			<a href="../../notes/index.html">Notes</a>
+			<a href="../../cv.html">CV</a>
+		</nav>
+	</header>
+	<article>
+		<p class="kicker">NOTE</p>
+		<h1>Missing Data</h1>
+		<p class="lead">A methodological note on spatially structured missingness, observation coverage, and transferability in Copperbelt mineral prospectivity.</p>
+
+		<section>
+			<h2>Missingness and the Observation Process</h2>
+			<p>Missing predictor values were initially treated as a preprocessing problem: affected observations were either removed or their missing values estimated. In spatial geological datasets, however, this treatment is not necessarily appropriate.</p>
+
+			<p>A geospatial dataset encodes two distinct phenomena: the geological system and the observation process. The availability of a geological, structural, or geophysical predictor depends on survey coverage, mapping extent, source resolution, historical exploration activity, and interpretative limits. The spatial pattern of missingness is therefore not necessarily random noise around a geological signal. It may partly record how that signal was acquired.</p>
+
+			<p>The distinction between a measured zero and a missing value is the clearest case. For a distance-to-fault predictor \(D_f(x)\), a value of zero indicates that location \(x\) lies on a mapped fault. A missing value indicates that \(D_f(x)\) has not been established in the available data. These are different states and should not be treated as equivalent.</p>
+
+			<p>The problem is compounded when predictor coverage is spatially structured. If fault-distance observations are dense in one part of the belt and sparse in another, any imputation that fills the sparse region from the observed distribution assumes that the relationship estimated in the dense region applies in the sparse region. Under along-belt spatial validation, this assumption may be the object of the test itself. Imputing the gap prior to validation can therefore make the validation circular or artificially optimistic.</p>
+
+			<p>The consequence for spatial holdout is direct. If a predictor is well observed in the training folds and poorly observed in a held-out fold, apparent predictive transfer may partly reflect differences in data availability rather than differences in geological relationships. Fold-level performance differences may then reflect coverage differences rather than geological differences.</p>
+
+			<p>Let \(X_j(x)\) denote the underlying value of predictor \(j\) at location \(x\), and let</p>
+
+			<div class="math-display">\[
+			R_j(x)=
+			\begin{cases}
+			1, & X_j(x)\text{ is observed},\\
+			0, & X_j(x)\text{ is missing}.
+			\end{cases}
+			\]</div>
+
+			<p>The dataset therefore contains information about the <strong>observed values</strong> of \(X_j(x)\) and the spatial distribution of \(R_j(x)\). If \(P(R_j(x)=1)\) varies systematically with location, tectonic domain, or accessibility, the missingness pattern is itself a structured spatial field.</p>
+
+			<p>Three implications follow for the present workflow:</p>
+			<ol>
+				<li><strong>The spatial structure of missingness should be examined before an imputation rule is chosen.</strong> Relevant stratifications include Daly domain, along-belt fold, and distance to the belt margin.</li>
+				<li><strong>Imputation should not encode the relationship that the spatial validation is intended to test.</strong></li>
+				<li><strong>A measured zero and an unobserved value should remain distinct states unless evidence supports their equivalence.</strong></li>
+			</ol>
+
+			<p>Introducing a missingness indicator as a model predictor would require separate justification and has not been adopted here. The narrower requirement is that the dataset be treated as two components: <strong>the observed geological information and the process by which that information became observed</strong>. The objective is not a complete numerical matrix but the inference of geological relationships that transfer to parts of the Copperbelt where observation conditions differ from those represented in the training data.</p>
+		</section>
+
+		<section>
+			<h2>One final caveat: what Paper 1 implemented</h2>
+			<p>This conceptual framework should not be read as a description of the implemented Paper 1 workflow. The frozen V11 workflow used complete-case preprocessing. It did not resolve spatially structured missingness, model the observation process, or establish that missingness indicators improve geological inference. This note motivates a concern and a direction for further analysis; it does not claim that Paper 1 solved that concern.</p>
+		</section>
+
+		<p><a href="index.html">← Back to notes</a></p>
+	</article>
+<footer class="site-footer">
+    <div class="contact-line">Van Tasi | <a href="mailto:vanmutundo@gmail.com">vanmutundo@gmail.com</a></div>
+    <div class="footer-links">
+      <a href="https://github.com/vmtasi" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="../../cv.html">CV</a>
+    </div>
+	</footer>
+</main>
+</body>
+</html>
