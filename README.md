@@ -1,4 +1,4 @@
-# Van Mutundo Tasi — Personal Website
+# Van Mutundo Tasi Personal Website
 
 Minimal static research/personal website. No framework or build step.
 
