@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>AUC and Average Precision Disagree — Van Mutundo</title>
+	<title>A 0.7 AUC Is Not a Prospectivity Map — Van Mutundo</title>
 	<link rel="stylesheet" href="../../style.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.5/dist/katex.min.css" integrity="sha384-2dNi/m6JtSiviznrOIZ5fTiZ5As0In2QwkuXSgoqcQtCNplvJAbt+jveeN+8en73" crossorigin="anonymous">
 	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.5/dist/katex.min.js" integrity="sha384-TTF8eEsEKInX2meLzP5V1z/npGYIElXYGksx93f0qBZHu6IL3PdzVB8objytx+TR" crossorigin="anonymous"></script>
@@ -51,97 +51,69 @@
 	</header>
 	<article>
 		<p class="kicker">NOTE</p>
-		<h1>AUC and Average Precision Disagree</h1>
-		<p class="lead">A working note on why a spatial AUC near 0.7 and a low precision&ndash;recall score can both be correct descriptions of the same model.</p>
+		<h1>A 0.7 AUC Is Not a Prospectivity Map</h1>
+		<p class="lead">What a respectable ROC score means when the positive class is 139 cells and the negatives are not barren rock.</p>
 
-		<p>The Copperbelt grid has 1,899 cells and 139 known deposits. The positive class is about 7.3% of the data. The V9 model had an aggregate spatial AUC of roughly 0.693, and its average precision, which is the area under the precision&ndash;recall curve and is often reported as PR-AUC, was low enough that it is tempting to call the model a failure. The two numbers are not in conflict. They are summaries of different properties of the same ranking.</p>
+		<p>An AUC of 0.7 sounds like a pass mark. In a belt with 139 known deposits in 1,899 cells, it is a much weaker statement than it looks. It says that a randomly chosen known deposit tends to score above a randomly chosen cell. Most cells are not deposits. Most of them are not even prospective. Clearing that bar is not the same as finding ore.</p>
 
 		<section>
-			<h2>Two summaries of one ranking</h2>
+			<h2>What the negatives are</h2>
 
-			<p>ROC-AUC is the probability that a randomly chosen deposit receives a higher score than a randomly chosen non-deposit:</p>
+			<p>The first thing to get straight is what the negative class is. The 1,760 cells without a known deposit are not 1,760 barren cells. They are cells where no deposit is recorded. Some are under cover. Some are in the wrong stratigraphy, which is a real negative. Some are known prospects, anomalies, or occurrences that have never been drilled. Some are in areas nobody has mapped at a useful scale. The model is not separating mineralized rock from barren rock. It is separating known deposits from everything else in the archive. That is an easier problem, and it is contaminated by the exploration history.</p>
+		</section>
+
+		<section>
+			<h2>Two curves, two questions</h2>
+
+			<p>ROC-AUC is the probability that a deposit outranks a non-deposit:</p>
 
 			<div class="math-display">\[
 			\mathrm{AUC} = P\!\left(\hat{p}^{+} > \hat{p}^{-}\right).
 			\]</div>
 
-			<p>Every positive&ndash;negative pair contributes equally. The metric is therefore dominated by the many negatives: a model can order the bulk of the background correctly while doing little at the top of the list, and AUC will still look respectable.</p>
+			<p>It gives every positive&ndash;negative pair the same weight. With 139 positives and 1,760 negatives there are 244,640 pairs, and the vast majority involve negatives that are easy to separate: granite, cover, post-orogenic sediments. A model can get a respectable AUC by learning the first-order geology and never learn where the ore is within the Katangan.</p>
 
-			<p>Average precision is the mean of the precision values measured at the ranks of the positive cases:</p>
+			<p>Average precision, the area under the precision&ndash;recall curve and the number usually reported as PR-AUC, is different:</p>
 
 			<div class="math-display">\[
-			\mathrm{AP} = \frac{1}{|\mathcal{P}|}\sum_{i\in\mathcal{P}} \mathrm{Precision}(i),
+			\mathrm{AP} = \frac{1}{|\mathcal{P}|}\sum_{i\in\mathcal{P}} \mathrm{Precision}(i).
 			\]</div>
 
-			<p>where \(\mathcal{P}\) is the set of positive cases and \(\mathrm{Precision}(i)\) is the fraction of cases ranked at or above \(i\) that are deposits. It weights the top of the ranking heavily, because that is where precision is still changing.</p>
-
-			<p>Both are computed from the same scores. They cannot disagree about the ordering. They disagree about which part of the ordering matters.</p>
-		</section>
-
-		<section>
-			<h2>The baseline is prevalence, not zero</h2>
-
-			<p>The most common error in reading average precision is to treat it as a score out of one. Under a no-skill ranking, where scores are assigned independently of the label, the expected average precision is the prevalence of the positive class:</p>
+			<p>It concentrates on the top of the ranking, which is the part a targeting exercise uses. Its no-skill value is the prevalence, not 0.5:</p>
 
 			<div class="math-display">\[
 			\mathrm{AP}_{\text{no skill}} \approx \pi = \frac{139}{1899} \approx 0.073.
 			\]</div>
 
-			<p>A random model therefore has an AUC of 0.5 and an average precision of about 0.07, not 0.5. An average precision of 0.15 is roughly twice the no-skill rate, even though it sounds like a poor mark on a percentage scale. The absolute number cannot be read without the baseline.</p>
-
-			<p>This also means average precision is not comparable across datasets or folds with different prevalence. AUC is. That difference matters here, because the spatial folds do not necessarily contain the same proportion of deposits.</p>
+			<p>An average precision of 0.15 would be about twice random. That is not a good absolute score, but it is not zero, and the raw number cannot be read without the baseline. A reviewer who knows the belt will ask for the baseline before they ask for the score.</p>
 		</section>
 
 		<section>
-			<h2>Why AUC can still be around 0.7</h2>
+			<h2>Why the AUC is high</h2>
 
-			<p>There are three reasons a model can have an AUC near 0.7 and poor average precision without either number being wrong.</p>
+			<p>The AUC is high for a geological reason. The belt has a strong first-order contrast: the Roan host rocks against the basement, the cover, and the post-Katangan intrusions. A model with distance to lithological contacts, distance to faults, and a gravity or magnetic response will pick up that contrast. It will rank the Katangan above the granite. That is real geology, and it is worth knowing. But it is a district-scale statement. It does not tell you which part of the Roan is mineralized. The PR curve is where that distinction shows up.</p>
 
-			<p><strong>First, the metrics look at different parts of the list.</strong> AUC asks whether a deposit tends to outrank a non-deposit anywhere in the ranking. Average precision asks whether the deposits are concentrated at the top. A model that moves most negatives below all the positives, but leaves the positives interleaved with the highest-scoring negatives, can satisfy the first and fail the second.</p>
+			<p>Then there is the spatial version of the same problem. If you pool the predictions from all the blocks and compute one AUC, you are comparing positives and negatives across blocks as well as within them. A model that gives a higher score to a block with more deposits gains AUC from the between-block comparison. That is not within-block discrimination. It is the model learning the regional base rate. The pooled AUC can look better than any of the per-block AUCs. Report both, and say which is which. The mean of the per-block AUCs is the more honest number for transfer.</p>
 
-			<p><strong>Second, a pooled AUC across spatial blocks mixes two kinds of discrimination.</strong> If blocks have different base rates and the model gives generally higher scores to the richer blocks, then cross-block positive&ndash;negative pairs contribute favourable comparisons. The pooled AUC then partly measures the model&rsquo;s ability to identify which block is richer, which is not the same as identifying which cell within a block is mineralised. A per-fold AUC removes this source. Pooled and mean-fold AUC answer different questions and should be labelled accordingly.</p>
-
-			<p><strong>Third, broad spatial covariates can produce a regional ranking without local discrimination.</strong> A smooth trend in gravity, a domain-level intercept, or a distance variable with a belt-scale gradient can place one region above another while carrying little information about the local prospectivity contrast. That is a real pattern in the data, but it is not the pattern a drilling decision needs.</p>
-
-			<p>The V9 aggregate AUC of about 0.693 is a statement about ranking across the belt. It is not a statement about the top of the list.</p>
+			<p>Block size matters for the same reason. If the blocks are 50 km across and the deposits are 5 km apart, the training and test sets may share the same camp. The test is then interpolation, not transfer. The block size should be chosen against the range of the spatial dependence and the spacing of the deposits, not against the bounding box.</p>
 		</section>
 
 		<section>
-			<h2>What the top of the list has to do</h2>
+			<h2>What I want to see</h2>
 
-			<p>Prospectivity modelling ends in a decision about where to look next, and that decision is usually about a small number of cells. If the question is which 50 cells to prioritise, the relevant quantities are precision and capture at 50, not the area under a curve computed over the whole grid.</p>
+			<p>What I want to see is not a single number. I want the map, the capture curve, and the names. If the top 50 cells contain 15 of the 139 deposits, that is a fourfold lift over the 3.7 you would get by picking 50 cells at random. That is a result worth discussing. If the top 50 contain five, the model is not a targeting tool, whatever the AUC says. I want to know which deposits were missed. If Tenke-Fungurume or Konkola or Nchanga is in the bottom half of the ranking, the model has a problem that no amount of AUC will fix. I want to know what the false positives are. If they are in the same stratigraphic unit as the true positives, the model may be onto something. If they are in the granite, it is not.</p>
 
-			<p>For scale: selecting 50 of 1,899 cells at random would capture about</p>
-
-			<div class="math-display">\[
-			\frac{50}{1899}\times 139 \approx 3.7
-			\]</div>
-
-			<p>deposits on average. A model that captures 15 of the 139 deposits in its top 50 cells is doing something useful, even if its average precision is low by the standards of a balanced classification problem. A model that captures four is not. The same AUC can accompany either outcome, because AUC does not determine what happens at rank 50.</p>
+			<p>I also want the per-block results, not the pooled one. The pooled number hides the folds where the model failed. A model that gets 0.75 in four blocks and 0.55 in one is a different object from a model that gets 0.69 everywhere. The first has a transfer problem; the second has a ceiling problem. Both matter, but they call for different work.</p>
 		</section>
 
 		<section>
-			<h2>What I report instead of a single number</h2>
+			<h2>The number is not the result</h2>
 
-			<p>For this project I now report the following, and I try not to let any one of them stand in for the others:</p>
+			<p>The 0.7 AUC is not a lie. It is a statement that the model has learned something about the belt. The low average precision is a statement that what it learned is not concentrated enough to be a deposit-scale targeting tool. Both can be true. The mistake is to report the first without the second, or to report the second without the baseline.</p>
 
-			<ul>
-				<li>Per-fold AUC and average precision, with the prevalence of each fold.</li>
-				<li>Whether an AUC is pooled across folds or averaged over folds, stated explicitly.</li>
-				<li>Average precision as a ratio to the fold&rsquo;s no-skill baseline, not only as a raw value.</li>
-				<li>Precision, recall, and the number of deposits captured at the operating list length.</li>
-				<li>Calibration separately, because both AUC and average precision are rank-based and neither says whether a predicted probability of 0.3 corresponds to a 30% chance.</li>
-			</ul>
+			<p>A 0.7 AUC is a reasonable first pass at a district-scale screening problem. It is not a prospectivity map. The map is the map: the high scores in the right stratigraphy, the right structure, and the right part of the belt; the gaps visible; the false positives explained or admitted; the missed deposits named. If the map cannot be defended in front of someone who has drilled the belt, the AUC cannot save it.</p>
 
-			<p>The last point is easy to forget. A model can rank well and be badly calibrated, or rank poorly and be well calibrated. Discrimination and calibration are different claims, and a prospectivity map is usually used as if it made both.</p>
-		</section>
-
-		<section>
-			<h2>The disagreement is informative</h2>
-
-			<p>An AUC of 0.7 says the model ranks better than chance across the belt. A low average precision says it does not concentrate enough of a 7% positive class at the top to be a good targeting rule at that prevalence. Both statements can be true of the same model, and the tension between them is the useful part.</p>
-
-			<p>What I have not yet resolved is how much of the remaining AUC comes from within-block discrimination and how much comes from between-block base-rate differences. That is a testable question, and it is the next one I intend to run. Until then, I treat the 0.7 as evidence that the model has learned something, not as evidence that it has learned the right thing.</p>
+			<p>I have not yet separated the within-block signal from the between-block base rate. That is the next test. Until it is done, I treat the 0.7 as a reason to keep looking, not as a result.</p>
 		</section>
 
 		<p><a href="index.html">&larr; Back to notes</a></p>
