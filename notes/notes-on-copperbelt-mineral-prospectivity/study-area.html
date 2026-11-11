@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>What Is the Study Area? — Van Mutundo</title>
+	<link rel="stylesheet" href="../../style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.5/dist/katex.min.css" integrity="sha384-2dNi/m6JtSiviznrOIZ5fTiZ5As0In2QwkuXSgoqcQtCNplvJAbt+jveeN+8en73" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.5/dist/katex.min.js" integrity="sha384-TTF8eEsEKInX2meLzP5V1z/npGYIElXYGksx93f0qBZHu6IL3PdzVB8objytx+TR" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.5/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+	<style>
+		.math-display {
+			max-width: 100%;
+			margin: 1.25rem 0;
+			overflow-x: auto;
+			overflow-y: hidden;
+			padding: .25rem 0;
+			-webkit-overflow-scrolling: touch;
+		}
+		.math-display .katex-display { margin: 0; text-align: left; }
+		.math-display .katex { white-space: nowrap; }
+		@media (max-width: 650px) {
+			.math-display { margin: 1rem -2px; }
+			.math-display .katex { font-size: .94em; }
+		}
+	</style>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			renderMathInElement(document.querySelector("article"), {
+				delimiters: [
+					{left: "$$", right: "$$", display: true},
+					{left: "\\(", right: "\\)", display: false},
+					{left: "\\[", right: "\\]", display: true}
+				],
+				throwOnError: false,
+				strict: "ignore"
+			});
+		});
+	</script>
+</head>
+<body>
+<main class="site">
+	<header>
+		<a href="../../index.html">Van Mutundo</a>
+		<nav>
+			<a href="../../index.html">Home</a>
+			<a href="../../projects/index.html">Projects</a>
+			<a href="../../notes/index.html">Notes</a>
+			<a href="../../cv.html">CV</a>
+		</nav>
+	</header>
+	<article>
+		<p class="kicker">NOTE</p>
+		<h1>What Is the Study Area?</h1>
+		<p class="lead">A working note on why the boundary of a prospectivity study is a modelling choice, and what follows from making that choice explicit.</p>
+
+		<p>Most project descriptions treat the study area as a preliminary detail: a bounding box, an administrative unit, a named geological terrane. In this project it turned out to be one of the decisions that constrained the result most.</p>
+
+		<p>The Copperbelt is a continuous mineralised system. The data describing it are not continuous. Public regional geoscience is assembled from surveys flown, mapped, and reported at different times, for different purposes, over different extents. A study area drawn around the geological system and a study area drawn around the available data are not the same object, even when they share a map sheet.</p>
+
+		<p>I find it useful to separate four frames that are usually conflated under the single word &ldquo;area&rdquo;.</p>
+
+		<section>
+			<h2>Four frames</h2>
+
+			<p><strong>The geological frame</strong> is the system that produced the mineralisation. In the Central African Copperbelt this is the Katangan Basin and its deformation during the Lufilian orogeny: source rocks, fluid pathways, structural traps, and the subsequent history that preserved or exposed them. A model of this frame should be defensible in geological terms, not merely convenient in map terms. The tectonic domains of Daly et al. are one working disaggregation of it, and they are an interpretation rather than an observable boundary.</p>
+
+			<p><strong>The observational frame</strong> is the footprint over which the predictors exist. It is smaller than the geological frame, and it is not a random subset of it. Aeromagnetic coverage is the clearest example in this project. The survey does not stop where the geology changes; it stops where the acquisition programme stopped. The set of cells with a complete predictor vector is therefore a map of survey history as much as a map of the crust.</p>
+
+			<p><strong>The inferential frame</strong> is the support on which the model makes statements. Here it is a grid of 1,899 cells, with 139 known deposits assigned to cells. Cell size determines what a &ldquo;location&rdquo; means: two deposits a few kilometres apart may fall in one cell or in adjacent cells, and the model cannot distinguish those cases. The grid is not neutral. It sets the resolution at which the question is posed.</p>
+
+			<p><strong>The evaluation frame</strong> is the set of spatial blocks used for cross-validation. It defines what counts as transfer. If the blocks are aligned with the tectonic domains, the test asks whether a relationship learned in one domain predicts another. If they are aligned with the survey footprint, it may instead ask whether the model can extrapolate across a coverage boundary. Both are legitimate questions; they are not the same question.</p>
+		</section>
+
+		<section>
+			<h2>Where the frames diverge</h2>
+
+			<p>When the four frames coincide, the distinction is invisible and costs nothing. The difficulty begins when they diverge and the divergence is not stated.</p>
+
+			<p>In this project the divergence was visible in the aeromagnetic data. Large gaps in coverage coincided with areas containing known deposits. A model fitted to that grid can separate cells by survey coverage as easily as by geology. The coefficient attached to the magnetic predictor then has no stable geological interpretation, because the predictor is partly a record of where the survey flew. This is not a subtle statistical failure; it is the model answering a question about the observation process while being interpreted as an answer about the geological one.</p>
+
+			<p>The international border is a second frame that looks natural and is not geological. It cuts a continuous mineralised system, and it correlates with differences in tenure, exploration history, reporting practice, and language of the source documents. Using the border as the study boundary would make those differences part of the signal. That does not mean the border is irrelevant. It means that if it enters the analysis, it should enter as a stated covariate or a stated stratification, not as an unexamined edge.</p>
+
+			<p>Tectonic domains raise the same issue in a milder form. They are geologically motivated, which makes them more defensible than an administrative boundary, but their edges are interpreted from geophysical and structural evidence. A model with domain-specific coefficients treats those edges as real discontinuities. Whether the data support that treatment is an empirical question, and one that spatial validation is supposed to address rather than assume.</p>
+		</section>
+
+		<section>
+			<h2>What follows</h2>
+
+			<p>The practical consequence is not that one frame is correct. It is that a claim about the Copperbelt has to name the frame it is made in.</p>
+
+			<p>If the claim is about a geological process, the geological frame has to be defensible and the observational frame has to be shown not to be doing the work. If the claim is about where a model transfers, the evaluation frame has to be stated, because a different block layout is a different test. If the claim is about where the data support inference, that limit belongs in the result, not in a footnote about data availability.</p>
+
+			<p>The question I now ask is not &ldquo;what is the study area?&rdquo; but &ldquo;which frame is carrying this conclusion?&rdquo; A study area is not a container that the analysis happens inside. It is part of the argument, and it should be written down and tested like any other modelling choice.</p>
+
+			<p>The honest summary for this project is that the geological frame is the Katangan Basin and the Lufilian Arc, the observational frame is the public survey footprint, the inferential frame is a 1,899-cell grid, and the evaluation frame is a set of spatial blocks. They overlap substantially, but not completely, and the places where they do not overlap are where the interesting failures occur.</p>
+		</section>
+
+		<p><a href="index.html">&larr; Back to notes</a></p>
+	</article>
+	<footer class="site-footer">
+		<div class="contact-line">Van Tasi | <a href="mailto:vanmutundo@gmail.com">vanmutundo@gmail.com</a></div>
+		<div class="footer-links">
+			<a href="https://github.com/vmtasi" target="_blank" rel="noreferrer">GitHub</a>
+			<a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+			<a href="../../cv.html">CV</a>
+		</div>
+	</footer>
+</main>
+</body>
+</html>

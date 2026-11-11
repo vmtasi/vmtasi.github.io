@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>AUC and Average Precision Disagree — Van Mutundo</title>
+	<link rel="stylesheet" href="../../style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.5/dist/katex.min.css" integrity="sha384-2dNi/m6JtSiviznrOIZ5fTiZ5As0In2QwkuXSgoqcQtCNplvJAbt+jveeN+8en73" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.5/dist/katex.min.js" integrity="sha384-TTF8eEsEKInX2meLzP5V1z/npGYIElXYGksx93f0qBZHu6IL3PdzVB8objytx+TR" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.5/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+	<style>
+		.math-display {
+			max-width: 100%;
+			margin: 1.25rem 0;
+			overflow-x: auto;
+			overflow-y: hidden;
+			padding: .25rem 0;
+			-webkit-overflow-scrolling: touch;
+		}
+		.math-display .katex-display { margin: 0; text-align: left; }
+		.math-display .katex { white-space: nowrap; }
+		@media (max-width: 650px) {
+			.math-display { margin: 1rem -2px; }
+			.math-display .katex { font-size: .94em; }
+		}
+	</style>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			renderMathInElement(document.querySelector("article"), {
+				delimiters: [
+					{left: "$$", right: "$$", display: true},
+					{left: "\\(", right: "\\)", display: false},
+					{left: "\\[", right: "\\]", display: true}
+				],
+				throwOnError: false,
+				strict: "ignore"
+			});
+		});
+	</script>
+</head>
+<body>
+<main class="site">
+	<header>
+		<a href="../../index.html">Van Mutundo</a>
+		<nav>
+			<a href="../../index.html">Home</a>
+			<a href="../../projects/index.html">Projects</a>
+			<a href="../../notes/index.html">Notes</a>
+			<a href="../../cv.html">CV</a>
+		</nav>
+	</header>
+	<article>
+		<p class="kicker">NOTE</p>
+		<h1>AUC and Average Precision Disagree</h1>
+		<p class="lead">A working note on why a spatial AUC near 0.7 and a low precision&ndash;recall score can both be correct descriptions of the same model.</p>
+
+		<p>The Copperbelt grid has 1,899 cells and 139 known deposits. The positive class is about 7.3% of the data. The V9 model had an aggregate spatial AUC of roughly 0.693, and its average precision, which is the area under the precision&ndash;recall curve and is often reported as PR-AUC, was low enough that it is tempting to call the model a failure. The two numbers are not in conflict. They are summaries of different properties of the same ranking.</p>
+
+		<section>
+			<h2>Two summaries of one ranking</h2>
+
+			<p>ROC-AUC is the probability that a randomly chosen deposit receives a higher score than a randomly chosen non-deposit:</p>
+
+			<div class="math-display">\[
+			\mathrm{AUC} = P\!\left(\hat{p}^{+} > \hat{p}^{-}\right).
+			\]</div>
+
+			<p>Every positive&ndash;negative pair contributes equally. The metric is therefore dominated by the many negatives: a model can order the bulk of the background correctly while doing little at the top of the list, and AUC will still look respectable.</p>
+
+			<p>Average precision is the mean of the precision values measured at the ranks of the positive cases:</p>
+
+			<div class="math-display">\[
+			\mathrm{AP} = \frac{1}{|\mathcal{P}|}\sum_{i\in\mathcal{P}} \mathrm{Precision}(i),
+			\]</div>
+
+			<p>where \(\mathcal{P}\) is the set of positive cases and \(\mathrm{Precision}(i)\) is the fraction of cases ranked at or above \(i\) that are deposits. It weights the top of the ranking heavily, because that is where precision is still changing.</p>
+
+			<p>Both are computed from the same scores. They cannot disagree about the ordering. They disagree about which part of the ordering matters.</p>
+		</section>
+
+		<section>
+			<h2>The baseline is prevalence, not zero</h2>
+
+			<p>The most common error in reading average precision is to treat it as a score out of one. Under a no-skill ranking, where scores are assigned independently of the label, the expected average precision is the prevalence of the positive class:</p>
+
+			<div class="math-display">\[
+			\mathrm{AP}_{\text{no skill}} \approx \pi = \frac{139}{1899} \approx 0.073.
+			\]</div>
+
+			<p>A random model therefore has an AUC of 0.5 and an average precision of about 0.07, not 0.5. An average precision of 0.15 is roughly twice the no-skill rate, even though it sounds like a poor mark on a percentage scale. The absolute number cannot be read without the baseline.</p>
+
+			<p>This also means average precision is not comparable across datasets or folds with different prevalence. AUC is. That difference matters here, because the spatial folds do not necessarily contain the same proportion of deposits.</p>
+		</section>
+
+		<section>
+			<h2>Why AUC can still be around 0.7</h2>
+
+			<p>There are three reasons a model can have an AUC near 0.7 and poor average precision without either number being wrong.</p>
+
+			<p><strong>First, the metrics look at different parts of the list.</strong> AUC asks whether a deposit tends to outrank a non-deposit anywhere in the ranking. Average precision asks whether the deposits are concentrated at the top. A model that moves most negatives below all the positives, but leaves the positives interleaved with the highest-scoring negatives, can satisfy the first and fail the second.</p>
+
+			<p><strong>Second, a pooled AUC across spatial blocks mixes two kinds of discrimination.</strong> If blocks have different base rates and the model gives generally higher scores to the richer blocks, then cross-block positive&ndash;negative pairs contribute favourable comparisons. The pooled AUC then partly measures the model&rsquo;s ability to identify which block is richer, which is not the same as identifying which cell within a block is mineralised. A per-fold AUC removes this source. Pooled and mean-fold AUC answer different questions and should be labelled accordingly.</p>
+
+			<p><strong>Third, broad spatial covariates can produce a regional ranking without local discrimination.</strong> A smooth trend in gravity, a domain-level intercept, or a distance variable with a belt-scale gradient can place one region above another while carrying little information about the local prospectivity contrast. That is a real pattern in the data, but it is not the pattern a drilling decision needs.</p>
+
+			<p>The V9 aggregate AUC of about 0.693 is a statement about ranking across the belt. It is not a statement about the top of the list.</p>
+		</section>
+
+		<section>
+			<h2>What the top of the list has to do</h2>
+
+			<p>Prospectivity modelling ends in a decision about where to look next, and that decision is usually about a small number of cells. If the question is which 50 cells to prioritise, the relevant quantities are precision and capture at 50, not the area under a curve computed over the whole grid.</p>
+
+			<p>For scale: selecting 50 of 1,899 cells at random would capture about</p>
+
+			<div class="math-display">\[
+			\frac{50}{1899}\times 139 \approx 3.7
+			\]</div>
+
+			<p>deposits on average. A model that captures 15 of the 139 deposits in its top 50 cells is doing something useful, even if its average precision is low by the standards of a balanced classification problem. A model that captures four is not. The same AUC can accompany either outcome, because AUC does not determine what happens at rank 50.</p>
+		</section>
+
+		<section>
+			<h2>What I report instead of a single number</h2>
+
+			<p>For this project I now report the following, and I try not to let any one of them stand in for the others:</p>
+
+			<ul>
+				<li>Per-fold AUC and average precision, with the prevalence of each fold.</li>
+				<li>Whether an AUC is pooled across folds or averaged over folds, stated explicitly.</li>
+				<li>Average precision as a ratio to the fold&rsquo;s no-skill baseline, not only as a raw value.</li>
+				<li>Precision, recall, and the number of deposits captured at the operating list length.</li>
+				<li>Calibration separately, because both AUC and average precision are rank-based and neither says whether a predicted probability of 0.3 corresponds to a 30% chance.</li>
+			</ul>
+
+			<p>The last point is easy to forget. A model can rank well and be badly calibrated, or rank poorly and be well calibrated. Discrimination and calibration are different claims, and a prospectivity map is usually used as if it made both.</p>
+		</section>
+
+		<section>
+			<h2>The disagreement is informative</h2>
+
+			<p>An AUC of 0.7 says the model ranks better than chance across the belt. A low average precision says it does not concentrate enough of a 7% positive class at the top to be a good targeting rule at that prevalence. Both statements can be true of the same model, and the tension between them is the useful part.</p>
+
+			<p>What I have not yet resolved is how much of the remaining AUC comes from within-block discrimination and how much comes from between-block base-rate differences. That is a testable question, and it is the next one I intend to run. Until then, I treat the 0.7 as evidence that the model has learned something, not as evidence that it has learned the right thing.</p>
+		</section>
+
+		<p><a href="index.html">&larr; Back to notes</a></p>
+	</article>
+	<footer class="site-footer">
+		<div class="contact-line">Van Tasi | <a href="mailto:vanmutundo@gmail.com">vanmutundo@gmail.com</a></div>
+		<div class="footer-links">
+			<a href="https://github.com/vmtasi" target="_blank" rel="noreferrer">GitHub</a>
+			<a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+			<a href="../../cv.html">CV</a>
+		</div>
+	</footer>
+</main>
+</body>
+</html>
