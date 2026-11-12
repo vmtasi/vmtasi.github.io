@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Lab Notebook — Van Mutundo</title>
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="site">
+	<header>
+		<a href="../index.html">Van Mutundo</a>
+		<nav>
+			<a href="../index.html">Home</a>
+			<a href="../projects/index.html">Projects</a>
+			<a href="index.html">Lab</a>
+			<a href="../data/index.html">Data</a>
+			<a href="../principles.html">Principles</a>
+			<a href="../questions.html">Questions</a>
+			<a href="../cv.html">CV</a>
+		</nav>
+	</header>
+	<article>
+		<p class="kicker">LAB</p>
+		<h1>Lab Notebook</h1>
+		<p class="lead">Working observations from the Copperbelt prospectivity project. Short entries, dated, with the figure or table they refer to.</p>
+		<p class="quiet">Last updated 11 November 2026. These are working notes, not publications.</p>
+
+		<section>
+			<p class="quiet">2026-11-11</p>
+			<h2>Grid and negatives</h2>
+			<p>The modelled grid is 1,899 cells of 5 km. 139 cells contain at least one known deposit (7.3%). The deposit count sums to 184, so a cell can hold more than one. The other 1,760 cells are not barren. They are cells with no known deposit: under cover, in the footwall or hanging wall, known prospects, or unexplored. The model is separating known ore from the archive, not ore from barren rock.</p>
+			<p><a href="../data/index.html#grid">Grid v1</a></p>
+		</section>
+
+		<section>
+			<p class="quiet">2026-11-11</p>
+			<h2>Aeromagnetic coverage</h2>
+			<p>819 of the 1,899 cells fall in the EMAG2v3 nodata footprint. 91 of the 139 positive cells are in that footprint. The magnetic predictor is partly a map of where the survey flew. A model can use the gap as a signal, and the coefficient will not be geology.</p>
+			<p><a href="../assets/maps/copperbelt-emag-coverage.png">Figure: coverage and known deposit cells</a></p>
+		</section>
+
+		<section>
+			<p class="quiet">2026-11-11</p>
+			<h2>Predicted probability</h2>
+			<p>The V9 surface is highest in the northern part of the grid, where most known deposits already are. The maximum predicted probability is 0.25; the mean is 0.068, against a prevalence of 0.073. The mean prediction matches the base rate; that is calibration in the large, not evidence of local calibration. The ranking is the weak part. The map is reproducing the archive, not finding new ground.</p>
+			<p><a href="../assets/maps/copperbelt-probability.png">Figure: predicted probability</a></p>
+		</section>
+
+		<section>
+			<p class="quiet">2026-11-11</p>
+			<h2>AUC and average precision</h2>
+			<p>The aggregate spatial AUC is 0.693. Average precision is low in absolute terms; the no-skill value is 0.073, so an average precision of 0.15 would be about twice random. AUC gives every positive–negative pair the same weight and is dominated by the easy negatives: granite, cover, post-Katangan intrusions. Average precision concentrates on the top of the list, which is the part a drilling decision uses. At 50 cells, chance captures 3.7 of the 139 positive cells. The capture count at that list length is the number that matters.</p>
+			<p><a href="../data/index.html#grid">Grid v1 includes predicted probability and uncertainty</a></p>
+		</section>
+
+		<section>
+			<p class="quiet">2026-11-11</p>
+			<h2>Study area</h2>
+			<p>The border is not a geological boundary. The belt is the Katangan Basin and the Lufilian Arc. The data footprint is the survey and mapping coverage. The grid is the support of the claim. They do not coincide: 819 cells are outside the magnetic coverage, and the known deposits cluster where the Roan is exposed and where the explorers went. The study area should be the intersection of the three polygons, stated explicitly.</p>
+			<p><a href="../assets/maps/copperbelt-domains.png">Figure: grid and tectonic domains</a></p>
+		</section>
+
+		<section>
+			<p class="quiet">2026-08-13</p>
+			<h2>Spatial validation</h2>
+			<p>Random cross-validation asks whether the model interpolates. Spatial block cross-validation asks whether it transfers. The V9 aggregate AUC is 0.693; the per-block values are what matter. A model that gets 0.75 in four blocks and 0.55 in one has a transfer problem. A model that gets 0.69 everywhere has a ceiling problem. The block size should be set against the deposit spacing and the range of the spatial dependence, not the bounding box.</p>
+			<p><a href="../data/index.html">Data and maps</a></p>
+		</section>
+	</article>
+	<footer class="site-footer">
+		<div class="contact-line">Van Tasi | <a href="mailto:vanmutundo@gmail.com">vanmutundo@gmail.com</a></div>
+		<div class="footer-links">
+			<a href="https://github.com/vmtasi" target="_blank" rel="noreferrer">GitHub</a>
+			<a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+			<a href="../cv.html">CV</a>
+		</div>
+	</footer>
+</main>
+</body>
+</html>

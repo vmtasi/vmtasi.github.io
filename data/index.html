@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Data and Maps — Van Mutundo</title>
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="site">
+	<header>
+		<a href="../index.html">Van Mutundo</a>
+		<nav>
+			<a href="../index.html">Home</a>
+			<a href="../projects/index.html">Projects</a>
+			<a href="../lab/index.html">Lab</a>
+			<a href="index.html">Data</a>
+			<a href="../principles.html">Principles</a>
+			<a href="../questions.html">Questions</a>
+			<a href="../cv.html">CV</a>
+		</nav>
+	</header>
+	<article>
+		<p class="kicker">DATA</p>
+		<h1>Data and Maps</h1>
+		<p class="lead">Derived grid, model output, and map figures for the Copperbelt prospectivity project.</p>
+		<p class="quiet">Version 1 · 11 November 2026 · EPSG:32735</p>
+
+		<section id="probability">
+			<h2>Predicted probability</h2>
+			<figure>
+				<img src="../assets/maps/copperbelt-probability.png" alt="Predicted probability on the 1,899-cell Copperbelt grid, with known deposit cells shown as black dots.">
+				<figcaption>V9 predicted probability on the 5 km grid. Black dots are cells with at least one known deposit. Colour scale 0–0.25; mean prediction 0.068, prevalence 0.073.</figcaption>
+			</figure>
+			<p>The surface is highest in the northern part of the grid, where most known deposits are. It is a screening surface, not a drill target map.</p>
+		</section>
+
+		<section id="domains">
+			<h2>Grid and tectonic domains</h2>
+			<figure>
+				<img src="../assets/maps/copperbelt-domains.png" alt="The 1,899-cell study grid coloured by tectonic domain, with known deposit cells shown as black dots.">
+				<figcaption>Cells coloured by the Daly et al. domain assigned to the cell centroid. Grey lines are the reconciled domain boundaries. White gaps are cells outside the 1,899-cell modelled grid.</figcaption>
+			</figure>
+			<p>The grid is the support of the claim, not the geological boundary. The domain assignment is an interpretation; the boundaries are not facts.</p>
+		</section>
+
+		<section id="coverage">
+			<h2>Aeromagnetic coverage</h2>
+			<figure>
+				<img src="../assets/maps/copperbelt-emag-coverage.png" alt="EMAG2v3 coverage and nodata footprint across the Copperbelt grid, with known deposit cells shown as black dots.">
+				<figcaption>EMAG2v3 coverage (beige) and nodata footprint (grey). Black dots are cells with at least one known deposit. 91 of 139 positive cells fall in the gap.</figcaption>
+			</figure>
+			<p>819 of 1,899 cells are in the nodata footprint. The coverage boundary is an observation-process boundary, not a geological one.</p>
+		</section>
+
+		<section id="grid">
+			<h2>Grid v1</h2>
+			<p><a href="../assets/data/copperbelt_grid_v1.csv" download>copperbelt_grid_v1.csv</a> · 1,899 rows · 9 fields · 188 KB</p>
+			<table>
+				<tr><th>Field</th><th>Description</th></tr>
+				<tr><td>id</td><td>Grid cell identifier</td></tr>
+				<tr><td>centroid_x</td><td>Cell centroid easting, metres (EPSG:32735)</td></tr>
+				<tr><td>centroid_y</td><td>Cell centroid northing, metres (EPSG:32735)</td></tr>
+				<tr><td>domain</td><td>Daly et al. tectonic domain assigned to the cell</td></tr>
+				<tr><td>deposit_count</td><td>Number of known deposits in the cell (0–5)</td></tr>
+				<tr><td>deposit_present</td><td>1 if <code>deposit_count</code> &gt; 0, else 0</td></tr>
+				<tr><td>emag_gap</td><td>1 if the cell is in the EMAG2v3 nodata footprint, else 0</td></tr>
+				<tr><td>predicted_probability</td><td>V9 predicted probability of at least one deposit</td></tr>
+				<tr><td>uncertainty_std</td><td>Posterior standard deviation of the predicted probability</td></tr>
+			</table>
+		</section>
+
+		<section id="metadata">
+			<h2>Metadata</h2>
+			<table>
+				<tr><th>Item</th><th>Value</th></tr>
+				<tr><td>CRS</td><td>EPSG:32735 (WGS 84 / UTM zone 35S)</td></tr>
+				<tr><td>Cell size</td><td>5,000 m</td></tr>
+				<tr><td>Grid</td><td>1,899 cells</td></tr>
+				<tr><td>Positive cells</td><td>139 (7.32%)</td></tr>
+				<tr><td>Deposit records</td><td>184</td></tr>
+				<tr><td>EMAG2v3 gap</td><td>819 cells; 91 of 139 positive cells</td></tr>
+				<tr><td>Extent</td><td>280,140–720,140 m E; 8,377,300–8,862,300 m N</td></tr>
+				<tr><td>Model</td><td>V9 spatial model</td></tr>
+				<tr><td>Version</td><td>v1, 11 November 2026</td></tr>
+			</table>
+		</section>
+
+		<section id="sources">
+			<h2>Sources</h2>
+			<ul>
+				<li>USGS Scientific Investigations Report 2010-5090-T, Central African Copperbelt GIS data (deposits, prospects, permissive tracts).</li>
+				<li>Daly et al. (2025), <em>Tectonics</em>: Katangan Basin tectonic domains.</li>
+				<li>EMAG2v3, NOAA/NCEI: upward-continued magnetic anomaly grid.</li>
+				<li>V9 model output: predicted probability and posterior uncertainty per cell.</li>
+			</ul>
+			<p class="quiet">The 139 positive cells contain at least one known deposit; the 184 deposit records count multiple deposits within a cell. The negative class is “no known deposit,” not “barren.” Derived data are shared for review and reuse; cite this page and the original sources.</p>
+		</section>
+	</article>
+	<footer class="site-footer">
+		<div class="contact-line">Van Tasi | <a href="mailto:vanmutundo@gmail.com">vanmutundo@gmail.com</a></div>
+		<div class="footer-links">
+			<a href="https://github.com/vmtasi" target="_blank" rel="noreferrer">GitHub</a>
+			<a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+			<a href="../cv.html">CV</a>
+		</div>
+	</footer>
+</main>
+</body>
+</html>
