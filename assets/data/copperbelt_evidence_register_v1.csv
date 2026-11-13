@@ -1,0 +1,119 @@
+document_id,title,document_type,year,locality,geology,stratigraphy,structure,geochemistry,radiometry,geophysics,drillholes,cross_sections,occurrence,extraction_status
+0035,Le gisement Zn-Pb-Cu de Kipushi (Shaba - Zaïre) : Etude Géologique et Métallogénique.,report,,DRC,no,yes,yes,yes,no,no,yes,yes,yes,screened_only
+0088,Etude Des Mineralisations Du Gisement Cuprocobaltifere De Luiswishi Et Luishia,report,,"Mokambo, Democratic Republic of Congo",yes,yes,yes,yes,yes,yes,yes,yes,yes,figure_digitisation_candidate
+0100,Etude Comparative Des Horizons Contenant La Mineralisation Cupro-Cobaltifere Dans Le Sous-Groupe Des Mines (R.2) Et Le Sous-Groupe De Dipeta (R.3).,report,,"Kolwezi, Lualaba, R.D.C.",yes,yes,yes,yes,no,no,yes,yes,yes,partially_extracted
+0103,Geological Map Of Kibara Fold Belt,map,,"Katanga, Mokambo, Democratic Republic of Congo",yes,no,no,no,no,no,no,no,no,screened_only
+0105,L'Arc Cuprifère Du Katanga,map,,"Mokambo, Democratic Republic of Congo, Zambia",yes,yes,yes,no,no,no,no,no,trace,map_only
+0107,Carte De Synthese Geologique Et Miniere Kayoyo Sud,map,,"Katanga, Mokambo, Democratic Republic of Congo",yes,yes,no,no,no,no,no,no,no,map_only
+0121,Methodes De Recherche Et Evaluation Du Gisement De Kambove Ouest,report,,"Kambove, Lubumbashi, Zaire",no,trace,yes,yes,no,no,yes,no,yes,screened_only
+0140,Les Granitoïdes Kibariens Du Degré Carré De Mitwaba,report,,"Haut-Katanga, Lubumbashi, Mitwaba, Mokambo, Democratic Republic of Congo",no,trace,trace,yes,no,no,no,no,no,screened_only
+0200,Feuille Mitwaba - Sampwe,map,,Katanga,yes,no,no,no,no,no,no,no,no,screened_only
+0201,Feuille Mitwaba - Sampwe,map,,"Katanga, Mitwaba, Sampwe",yes,no,no,no,no,no,no,no,no,screened_only
+0205,Carte Magnetique Secteur Lukuni-Luiswishi,map,,,yes,no,no,no,no,yes,no,no,no,map_only
+0208,Carte D'Anomalie De Bouguer,map,,"Luiswishi, Lukuni",yes,no,no,no,no,yes,no,no,no,map_only
+0237,Coupe Stratigraphique,cross-section,,"Kabumba, Kambove, Kasenga, Kilungwe, Panda, Temke, Tschibamba",no,no,no,no,no,no,no,yes,no,screened_only
+0238,Coupe Stratigraphique Kakonde-Teke,cross-section,,"Kabambo, Kakonde, Kambove, Lukasanda, Teke",no,no,no,no,no,no,no,yes,no,screened_only
+0243,Etude Paleontologique Et Paleoecologique Des Stromatolites De La Serie Des Mines Dans Les Carrieres De Kolwezi (Musonoi Et Kamoto),report,,"Kolwezi, Lubumbashi, Zaire",no,yes,yes,yes,trace,no,trace,trace,yes,screened_only
+0258,Coupe Stratigraphique Kambove - Tenke,cross-section,,"Fungurume, Kakanda, Kambove, Kwatebala, Mambilima, Tenke",no,no,no,no,no,no,no,yes,no,screened_only
+0275,Mine De Kipushi,map,,"Kipushi, Mokambo, Democratic Republic of Congo",yes,no,no,no,no,no,no,no,no,screened_only
+0281,Carte De Prospection Geochimique Et Geologique,map,,Haut-Katanga,yes,no,no,yes,no,yes,no,no,no,map_only
+0283,Kamatanda Secteur 3,map,,"Haut-Katanga, Kamatanda, Mokambo, Democratic Republic of Congo",yes,no,no,no,no,yes,no,no,no,map_only
+0286,Kamatanda Secteur G Prospection Geophysique,map,,Kamatanda,yes,no,no,no,no,yes,no,no,no,map_only
+0344,2e2f62bc-d9ef-4de6-9359-cd1aca110e86-lessai-destimation-du-gisement-de-musonoi-a-kolwezi.pdf,cross-section,,,no,no,no,no,no,no,no,yes,no,screened_only
+0361,Feuille Pweto,map,,"Katanga, Pweto",yes,no,no,no,no,no,no,no,no,screened_only
+0379,"Carte Géologique Et Notice Explicative Du Degré Carré De Mitwaba (Shaba, Zaïre)",map,,"Shaba, Zaïre",yes,trace,yes,trace,no,no,no,no,no,screened_only
+0413,Coupe Schematique Dans Le Gisement De Kisenda,cross-section,,,no,no,no,no,no,no,no,yes,no,screened_only
+0414,Coupe Schematique Dans Le Gisement De Kinsenda,cross-section,,,no,no,no,no,no,no,no,yes,trace,screened_only
+0417,Synthese Bibliographique Sur Les Occurrences Cupro-Cobaltiferes Et Uraniferes De Lwishia,report,,"Katanga, Mokambo, Democratic Republic of Congo",no,yes,yes,trace,trace,no,no,no,yes,screened_only
+0419,Coupe Du Roan Sup & Kte Nord À Kolwezi,cross-section,,Kolwezi,no,no,no,no,no,no,no,yes,no,screened_only
+0426,Coupe Stratigraphique Kampowe-Tenke,cross-section,"October 26, 1957","Fungurume, Kakanda, Kamobove, Kwatebala, Mambilima, Tenke",no,trace,no,no,no,no,no,yes,no,screened_only
+0433,Mine De Musoshi,cross-section,,,no,no,no,no,no,no,no,yes,no,screened_only
+0527,Essai D'Estimation Du Gisement De Musonoi (Flanc Sud) À Kolwezi (De 1400 À 1300 M),report,,Kolwezi,no,yes,yes,yes,no,no,yes,yes,yes,screened_only
+0580,"Lithostratigraphie, Petrographie Et Mineralisations Du Kundelungu Superieur Au Katanga Meridional",report,,Katanga,no,yes,yes,yes,no,trace,trace,no,yes,screened_only
+0596,Coupe Schematique Dans Le Gisement De Kisenda,cross-section,,Kisenda,no,no,no,no,no,no,no,yes,no,screened_only
+0647,Carte D'Echantillonnage,map,,"Lubumbashi, Moba, Shaba",yes,no,no,no,no,no,no,no,no,screened_only
+0698,Coupe Schematique Dans Le Gisement De Kinsenda,cross-section,,Kinsenda,no,no,no,no,no,no,no,yes,no,screened_only
+0827,Etude Comparative Des Coupes Et Des Logs,cross-section,,"Fungurume, Kwatebala, Nguba",no,no,no,no,no,no,no,yes,no,screened_only
+0848,Tenke,cross-section,,Tenke,no,no,no,no,no,no,no,yes,no,screened_only
+0853,Coupe Geologique Du Gisement De Kinsenda,cross-section,,,no,no,no,no,no,no,no,yes,no,screened_only
+0866,Coupe Geologique Du Gisement De Kinsenda,cross-section,,Kinsenda,no,no,no,no,no,no,no,yes,no,screened_only
+0888,Musonoi T 17,cross-section,,"Democratic Republic Of The Congo, Kolwezi, Lualaba",no,no,no,no,no,no,no,yes,no,screened_only
+0893,Etude Comparative Des Coupes Et Des Logs,cross-section,,"Fungurume, Kwatebala, Nguba",no,no,no,no,no,no,no,yes,no,screened_only
+0957,Contribution A L'Etude Petrographique De La Serie Des Mines Du Shaba Dans Le Secteur De Kolwezi Les Carrieres De Mupine Et De Kamoto Principal,report,,"Kolwezi, Shaba",no,yes,yes,trace,no,no,trace,yes,yes,screened_only
+1035,Etude Comparative Des Coupes Et Des Logs,cross-section,,"Fungurume, Kwatebala, Nguba",no,no,no,no,no,no,no,yes,no,screened_only
+1043,Carte Géologique Du Shaba Méridional,map,,"Lubumbashi, Shaba, Zambia",yes,no,no,no,no,no,no,no,trace,screened_only
+1111,Etat Actuel Des Connaissances Sur Les Mineralisations Cuprocobaltiferes Du Secteur De Kakanda-Kambove,report,,"Kakanda-Kambove, Lubumbashi, Republique Democratique Du Congo",no,yes,yes,yes,no,no,yes,no,yes,screened_only
+1177,Contribution À L'Étude Des Occurrences Cupro-Cobaltifères Et Uranifères De Kolwezi,report,,"Kolwezi, Shaba, Zaire",no,yes,yes,yes,no,no,no,no,yes,screened_only
+1231,Contribution À L'Étude Lithostratigraphique Pétrographique Et Sédimentologique De La Brèche De Fond De Kamoto Principal,report,,"Kolwezi, Shaba",no,trace,yes,no,trace,no,no,yes,trace,screened_only
+1258,Inventaire Des Roches Basiques Du Protérozoïque Supérieur (Katanguien) Du Shaba,report,,Shaba,no,no,yes,yes,no,no,no,no,no,screened_only
+1300,Groupe Du Katanga Echelle Stratigraphique,cross-section,,Katanga,no,no,no,no,no,no,no,yes,no,screened_only
+1305,Fig. 5: Logs Stratigraphiques Des Coupes Effectuees A Shinkolobwe,cross-section,,Shinkolobwe,no,trace,no,no,no,no,no,yes,no,screened_only
+1317,Carte Geologique Du Shaba Méridional,map,,"Lubumbashi, Shaba Méridional, Zambie",yes,no,no,no,no,no,no,no,no,screened_only
+1325,Carte Des Gisements Et Des Mineralisations,map,,Kolwezi,yes,no,no,no,no,no,no,no,yes,screened_only
+1388,Control Tectonique De La Mineralisation Cuprocobaltifere Cas Du Gisement De Kamoto Etang,report,,"Democratic Republic Of The Congo, Haut-Katanga",yes,yes,yes,yes,no,no,trace,yes,yes,table_located_not_extracted
+1408,"Contribution À L'Étude Géologique Des Sondages De Luiswishi (Lsw-1215 Et Lsw-1216) Haut-Katanga, Rdc : Lithostratigraphie, Pétrographie, Métallographie Et Radiométrie",report,,"Democratic Republic Of The Congo, Haut-Katanga, Lubumbashi",no,yes,yes,no,yes,no,yes,yes,yes,partially_extracted
+1431,"Contribution A L'Etude Metallogenique Et Geophysique Des Occurrences Cupriferes De Tantara Et Kifumpa (Sud-Katanga, Rdc)",report,"March 1, 2013","Rdc, Sud-Katanga",no,yes,yes,yes,no,yes,yes,trace,yes,screened_only
+1525,"Etude Cartographique, Lithostratigraphique Et Structurale Du Gisement De Ruashi Mining",report,,"Democratic Republic Of The Congo, Haut-Katanga, Lubumbashi",yes,yes,yes,trace,no,trace,yes,yes,yes,table_located_not_extracted
+1711,Carte Geologique Du Gisement De Kinsenda,map,,"Kinsenda, Musoshi, Tshinsenda",yes,no,no,no,no,no,no,no,no,screened_only
+1713,"Contribution À L'Étude Géologique Des Sondages De Luiswishi (Lsw-1215 Et Lsw-1216) Haut-Katanga, Rdc : Lithostratigraphie, Pétrographie, Métallographie Et Radiométrie",report,,"Haut-Katanga, Republique Democratique Du Congo",no,yes,yes,yes,yes,trace,yes,no,yes,screened_only
+1850,Gites Et Indices De Mineralisation Dans Le Secteur De Malemba-Nkulu,report,,"Democratic Republic Of The Congo, Katanga, Malemba-Nkulu",trace,yes,yes,trace,trace,trace,no,trace,yes,screened_only
+1919,Inventaire Des Mineralisations Au Sud Du 12° Latitude Sud Dans Le Sud - Katanga,report,,Katanga,no,yes,yes,yes,no,trace,trace,no,yes,screened_only
+2057,Coupe Ideal A Travers Le Lambeau De Recouvrement De Kolwezi,cross-section,,Kolwezi,no,no,trace,no,no,no,no,yes,no,screened_only
+2058,Lambeau De Kolwezi Repartition Des Ecailles,map,,Kolwezi,yes,no,no,no,no,no,no,no,no,screened_only
+2106,Fungurume Gisement I,map,,Zaire,yes,no,no,no,no,no,no,no,trace,screened_only
+2206,Contribution A L'Etude Petrographique Et Petrologique De La « Serie Des Mines» Dans Le Polygone Tenke - Fungurume,report,,"Lubumbashi, Zaire",no,yes,yes,trace,no,no,trace,yes,yes,screened_only
+2213,Etude Comparative Des Coupes Et Des Logs,cross-section,,"Fungurume, Katolamana, Kilambu, Kwatabala, Nguba",no,no,no,no,no,no,no,yes,no,screened_only
+2224,Coupe Nguba,cross-section,,,no,no,trace,no,no,no,no,yes,no,screened_only
+2376,Shaba Meridional,map,,"Kolwezi, Likasi, Lubumbashi, Shaba",yes,no,trace,no,no,no,no,no,no,screened_only
+2406,Etude Geologique De La Colline Jean-Marie 2,report,,"Democratic Republic Of The Congo, Haut-Katanga, Likasi, Lubumbashi",yes,yes,yes,no,yes,no,no,yes,yes,extracted
+2455,Description Des Traits Structuraux Et Mineralogiques Du Gisement Cupro- Cobaltifere De Kolwezi,report,,"Kolwezi, Lubumbashi",no,trace,yes,yes,no,no,trace,no,yes,screened_only
+2509,Synthèse Bibliographique Sur Les Occurrences De Musoshi,report,,Musoshi,no,yes,no,trace,no,no,no,trace,yes,screened_only
+2519,Synthèse Bibliographique Sur Les Occurrences De Musoshi,report,,"Democratic Republic Of The Congo, Musoshi",no,yes,no,yes,no,no,no,yes,yes,screened_only
+2527,Cobalt : Gisements Et Exploitation De 1924 A 1991 Au Katanga,report,,Katanga,no,no,no,no,no,no,no,no,yes,screened_only
+2555,Serie Des Mines Kambove. W,cross-section,,Kambove,no,no,trace,no,no,no,no,yes,trace,screened_only
+2558,"Contribution A L'Etude Geochimique Du Magmatisme Basique Du Mwashya Inferieur, Supergroupe Du Katanga (Secteur De Likasi, Kambove Et Mulungwishi)",report,,"Kambove, Katanga, Likasi, Lubumbashi, Mulungwishi",no,yes,yes,yes,yes,no,no,no,yes,partially_extracted
+2568,Serie Des Mines Kambove W,cross-section,,Kambove,no,no,no,no,no,no,no,yes,no,screened_only
+2569,Stratigraphie De Kambovew,cross-section,,Kambovew,no,trace,no,no,no,no,no,yes,no,screened_only
+2589,Synthese Mineralogique Sur L'Exploitation Des Oxydes De Cobalt Dans L'Arc Cuprifere Du Katanga.,report,,Katanga,no,yes,yes,yes,no,no,trace,no,yes,screened_only
+2608,Relation Entre La Matière Organique Et La Minéralisation Cu-Co-U De La Serie Des Mines Dans Le Shaba Meridional (Cas De Kolwezi Sahba),report,,"Kolwezi, Shaba Meridional",yes,yes,yes,yes,no,no,no,yes,trace,table_located_not_extracted
+2619,Colonne Stratigraphique De Synthèse Du Kibara Inférieur Et Moyen Dans Le S-W Du Shaba.,cross-section,,Shaba,no,no,no,no,no,no,no,yes,no,screened_only
+2620,Colonnes Stratigraphiques Du Kibara Inferieur Et Moyen Dans Le S-W Du Shaba,cross-section,,Shaba,no,trace,no,no,no,no,no,yes,no,screened_only
+2642,Lambeau De Kolwezi Repartition Des Ecailles,map,,Kolwezi,yes,no,no,no,no,no,no,no,no,screened_only
+2747,Canevas D'Ensemble Du Shaba Meridional: Principes Generaux D'Etablissement Et Inventaire Des Points Fondamentaux (Reperes Geodesiqūes Et Points De Nivellements),report,,Shaba,no,no,trace,no,no,trace,no,no,no,screened_only
+2755,Inventaire Des Mineralisations Au Sud Du 12° Latitude Sud Dans Le Sud - Katanga,report,,Katanga,no,yes,yes,yes,trace,no,trace,no,yes,screened_only
+2847,"Inventaire Des Roches Eruptives, Metamorphiques Et Leurs Mineralisations Associees Dans Les Regions Du Shaba Et Du Kasai",report,,"Kasai, Shaba",no,yes,yes,no,no,no,trace,no,yes,screened_only
+2970,Carte Géologique De La Région De Lubumbashi,map,,"Katanga, Lubumbashi",yes,no,no,no,no,no,no,no,no,screened_only
+3003,Colonnes Stratigraphiques Du Kibara Inferieur Et Moyen Dans Le S-W Du Shaba,cross-section,,Shaba,no,trace,no,no,no,no,no,yes,no,screened_only
+3061,Contribution A L'Etude Petrographique Et Petrologique De La Serie Des Mines Shabiennes (Roan Moyen) Dans La Carriere De Mupine A Kolwezi,report,,"Kolwezi, Lubumbashi, Shaba",no,yes,yes,yes,no,no,trace,yes,yes,screened_only
+3122,Logs Stratigraphiques Des Coupes Effectuees A Shinkolobwe,cross-section,,Shinkolobwe,no,trace,no,no,no,no,no,yes,no,screened_only
+3129,Kakanda Stratigraphie De La Serie Des Mines,cross-section,,Kakanda,no,trace,no,no,no,no,no,yes,no,screened_only
+3217,Etude Geologique Du Gisement De Tenke,report,,Lubumbashi,yes,yes,yes,yes,no,no,no,yes,yes,extracted
+3399,Inventaire Des Indices Et Mineralisation Du Territoire De Sakania,report,,"Democratic Republic Of The Congo, Katanga, Sakania",no,yes,yes,yes,no,no,yes,no,yes,screened_only
+3411,Revue Bibliographique De La Stratigraphie Du Roan Supérieur Dans La Région De Likasi Et Manifestations Volcaniques Associées,report,,Likasi,trace,yes,yes,yes,no,trace,no,no,yes,screened_only
+3461,Inventaire Des Gites Des Mineraux Radioactifs Dans Le Katanga Meridional,report,,"Katanga, Lubumbashi, Republique Democratique Du Congo",no,yes,no,yes,yes,yes,no,no,yes,narrative_only
+3537,Indices Des Mineralisations Dans Le Secteur De Mitwaba Nord-Katanga,report,,"Mitwaba, Nord-Katanga",no,yes,yes,trace,trace,trace,no,trace,yes,screened_only
+3627,Etude Comparative Du Mwashya Superieur (R.4.2.) Et Des Shales Dolomitiques (S.D.) Dans L'Arc Cuprifere Katangais,report,,"Kambove, Kipushi, Likasi, Lubumbashi",no,yes,no,yes,no,no,yes,no,yes,partially_extracted
+3702,Synthese De Formations Des Roches Magmatiques Dans Le Katanguien Meridional,report,,Lubumbashi,no,yes,yes,trace,no,no,trace,no,yes,screened_only
+3722,"Lithos-Stratigraphie, Mineralisations Et Indices Du Kundelungu Dans Le Secteur Mitwaba-Manono Et Pweto (Region Nord -Est Katanga)",report,,"Katanga, Lubumbashi, Manono, Mitwaba, Pweto, Republique Democratique Du Congo",no,yes,yes,trace,trace,trace,trace,no,yes,screened_only
+3731,Inventaire Des Indices De Mineralisation Au Katanga,report,,Katanga,no,yes,yes,yes,no,no,no,no,yes,screened_only
+3781,Etude Des Indices Et Mineralisations Du Secteur Kasenga Pweto,report,,"Haut-Katanga, Kasenga, Pweto",trace,yes,yes,trace,trace,no,no,no,yes,screened_only
+3848,Stratigraphie Du Groupe Du Katanga Ou Katanguien Occidental,report,,"Elisabethville, Kambove, Katanga, Sakabinda",no,trace,yes,no,no,no,no,no,no,screened_only
+3854,Facies Et Epaisseurs Du Groupe R.4,map,,"Chabara, Fungurume, Kabolela, Kahulungu, Kakanda, Kalaih, Kambove, Kolwezi, Likasi, Luankonko, Shinkolobwe, Tenke",yes,no,trace,no,no,no,no,no,no,screened_only
+3856,Roan De Tenke - Fungurume,map,,"Fungurume, Tenke",yes,no,no,no,no,no,no,no,no,screened_only
+3863,Arc Cuprifère De Katanga - Zone Centrale Structures Tectoniques Principales,map,,Katanga,yes,no,yes,no,no,no,no,no,no,screened_only
+3870,Carte Des Gisements Et Des Mineralisations,map,,Kolwezi,yes,no,trace,trace,no,no,no,no,yes,screened_only
+3878,Coupes Dans Le Lambeau De Kolwezi,cross-section,,Kolwezi,no,no,yes,no,no,no,trace,yes,no,screened_only
+3911,Etude Geologique Du Gisement De Kinsenda Au Niveau 360,report,,"Haut-Katanga, Lubumbashi, Republique Democratique Du Congo",no,yes,yes,yes,yes,no,yes,yes,yes,screened_only
+3952,Contribution A L'Etude Des Formations Des Groupes De Nguba Et Kundelungu De La Region De Luiswishi,report,,"Katanya, Luiswishi, R.D.C.",no,yes,yes,trace,no,no,no,no,yes,screened_only
+4041,Etude Cartographique Et Structurale Du Massif De Tshikinyna A Kolwezi,report,,"Kolwezi, République Démocratique Du Congo",yes,yes,yes,trace,no,trace,no,yes,yes,screened_only
+4042,Contribution Aux Etudes Cartographique Et Structurale Des Formations Geologiques Du Perimetre De La Carriere Edwall A Kolwezi,report,,"Democratic Republic Of The Congo, Kolwezi, Lubumbashi",yes,yes,yes,yes,no,no,no,yes,yes,screened_only
+4054,Region De Kolwezi Carte Des Gisements Et Des Mineralisations,map,,Kolwezi,yes,no,trace,trace,no,no,no,no,yes,screened_only
+4055,Region De Kolwezi Structures Tectoniques Principales Et Typologie,map,,Kolwezi,yes,no,yes,no,no,no,no,no,no,screened_only
+4126,Etude Geologique De La Mine De Kakanda Est,report,,Lubumbashi,no,yes,yes,yes,no,no,no,yes,yes,screened_only
+4190,"Etude Cartographique, Petrographique Et Geochimique Du Mwashya Dans Le Prospect De Malemebela A Kakanda",report,,"Kakanda, Likasi, Republique Democratique Du Congo",yes,yes,yes,yes,no,no,no,yes,yes,extracted
+4280,Contribution À L'Étude Des Occurrences Cupro-Cobaltifères Et Uranifères De Kolwezi Shaba Zaire,report,,"Kolwezi, Shaba, Zaire",no,yes,yes,yes,no,trace,no,no,yes,screened_only
+4343,Repartition Lithostratigraphique Et Petrographie Du Roan De Sakania A Kolwezi,report,,"Kolwezi, Sakania",no,yes,yes,trace,no,no,yes,no,yes,screened_only
+4344,Etude Geologique Des Formations Kibariennes Du Secteur De Katanda (Bloc Centre) Couvert Par Le Pe 120 De La Societe D'Exploitation De La Cassiterite Au Katanga (Secakat),report,,"Katanda, Katanga",trace,yes,yes,trace,no,no,no,no,yes,screened_only
+4374,Etude Des Minéralisations En Cu Et Co Dans Le Sous-Groupe Des Mines (R2) : Lithostratigraphie-Géochimie-Structurale Et Métallogénie. Cas Du Gisement De Shadirandzoro,report,,"Democratic Republic Of The Congo, Lualaba",yes,yes,yes,yes,no,no,yes,yes,yes,extracted
+4577,Serie Des Mines Kambove W,cross-section,,Kambove,no,no,trace,no,no,no,no,yes,yes,screened_only
+4690,Carte Gravimétrique,map,,"Angola, Katanga, Ruanda, Tanganyika, Urundi",yes,no,no,no,no,yes,no,no,no,screened_only

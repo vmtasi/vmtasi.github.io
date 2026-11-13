@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Lab Notebook — Van Mutundo</title>
+	<title>Lab Observations — Van Mutundo</title>
 	<link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -22,49 +22,47 @@
 	</header>
 	<article>
 		<p class="kicker">LAB</p>
-		<h1>Lab Notebook</h1>
-		<p class="lead">Working observations from the Copperbelt prospectivity project. Short entries, dated, with the figure or table they refer to.</p>
-		<p class="quiet">Last updated 11 November 2026. These are working notes, not publications.</p>
+		<h1>Lab Observations</h1>
+		<p class="lead">Working observations from the Copperbelt project. Each entry records the evidence, the implication and the limit. These are not publications.</p>
+		<p class="quiet">Register last verified 13 November 2026. Observation IDs are stable.</p>
 
-		<section>
-			<p class="quiet">2026-11-11</p>
-			<h2>Grid and negatives</h2>
-			<p>The modelled grid is 1,899 cells of 5 km. 139 cells contain at least one known deposit (7.3%). The deposit count sums to 184, so a cell can hold more than one. The other 1,760 cells are not barren. They are cells with no known deposit: under cover, in the footwall or hanging wall, known prospects, or unexplored. The model is separating known ore from the archive, not ore from barren rock.</p>
-			<p><a href="../data/index.html#grid">Grid v1</a></p>
+		<section id="obs-01">
+			<p class="quiet">OBS-01 · Status: open</p>
+			<h2>Aeromagnetic coverage is an observation-process boundary</h2>
+			<p><strong>Evidence.</strong> 819 of 1,899 cells fall in the EMAG2v3 nodata footprint. 91 of the 139 label-positive cells fall in that gap.</p>
+			<p><strong>Implication.</strong> A model can learn the survey geometry and report it as geology. The gap belongs to the observation process, not to the geological signal.</p>
+			<p><a href="../assets/maps/copperbelt-emag-coverage.png">Figure: coverage and label-positive cells</a></p>
 		</section>
 
-		<section>
-			<p class="quiet">2026-11-11</p>
-			<h2>Aeromagnetic coverage</h2>
-			<p>819 of the 1,899 cells fall in the EMAG2v3 nodata footprint. 91 of the 139 positive cells are in that footprint. The magnetic predictor is partly a map of where the survey flew. A model can use the gap as a signal, and the coefficient will not be geology.</p>
-			<p><a href="../assets/maps/copperbelt-emag-coverage.png">Figure: coverage and known deposit cells</a></p>
-		</section>
-
-		<section>
-			<p class="quiet">2026-11-11</p>
-			<h2>Predicted probability</h2>
-			<p>The V9 surface is highest in the northern part of the grid, where most known deposits already are. The maximum predicted probability is 0.25; the mean is 0.068, against a prevalence of 0.073. The mean prediction matches the base rate; that is calibration in the large, not evidence of local calibration. The ranking is the weak part. The map is reproducing the archive, not finding new ground.</p>
+		<section id="obs-02">
+			<p class="quiet">OBS-02 · Status: open</p>
+			<h2>Predicted probability is calibrated in the large, not locally</h2>
+			<p><strong>Evidence.</strong> The V9 surface has a maximum of 0.25 and a mean of 0.068, against a prevalence of 0.073. The mean matches the base rate.</p>
+			<p><strong>Implication.</strong> Matching the base rate is calibration in the large. It is not evidence that local probabilities are reliable. The ranking is the weak part.</p>
 			<p><a href="../assets/maps/copperbelt-probability.png">Figure: predicted probability</a></p>
 		</section>
 
-		<section>
-			<p class="quiet">2026-11-11</p>
-			<h2>AUC and average precision</h2>
-			<p>The aggregate spatial AUC is 0.693. Average precision is low in absolute terms; the no-skill value is 0.073, so an average precision of 0.15 would be about twice random. AUC gives every positive–negative pair the same weight and is dominated by the easy negatives: granite, cover, post-Katangan intrusions. Average precision concentrates on the top of the list, which is the part a drilling decision uses. At 50 cells, chance captures 3.7 of the 139 positive cells. The capture count at that list length is the number that matters.</p>
-			<p><a href="../data/index.html#grid">Grid v1 includes predicted probability and uncertainty</a></p>
+		<section id="obs-03">
+			<p class="quiet">OBS-03 · Status: open</p>
+			<h2>AUC and average precision answer different questions</h2>
+			<p><strong>Evidence.</strong> The aggregate spatial AUC is 0.693. Average precision is low in absolute terms; the no-skill value is 0.073. At a list of 50 cells, chance captures 3.7 of the 139 label-positive cells.</p>
+			<p><strong>Implication.</strong> AUC weights every positive-negative pair and is dominated by easy negatives. Average precision concentrates on the top of the list, which is the part a drilling decision uses. Report capture at the decision list length, not AUC alone.</p>
+			<p><a href="../data/index.html#grid">Grid v1: predicted probability and uncertainty</a></p>
 		</section>
 
-		<section>
-			<p class="quiet">2026-11-11</p>
-			<h2>Study area</h2>
-			<p>The border is not a geological boundary. The belt is the Katangan Basin and the Lufilian Arc. The data footprint is the survey and mapping coverage. The grid is the support of the claim. They do not coincide: 819 cells are outside the magnetic coverage, and the known deposits cluster where the Roan is exposed and where the explorers went. The study area should be the intersection of the three polygons, stated explicitly.</p>
-			<p><a href="../assets/maps/copperbelt-domains.png">Figure: grid and tectonic domains</a></p>
+		<section id="obs-04">
+			<p class="quiet">OBS-04 · Status: open</p>
+			<h2>The study area is not yet decided</h2>
+			<p><strong>Evidence.</strong> The Daly union was an investigated candidate framework, not an adopted boundary. The 1,899-cell V14 grid is a historical modelling frame. The five permissive tracts are historical. The acquired evidence clusters in the Kolwezi–Tenke–Likasi–Lubumbashi corridor, and most analytical samples have no per-sample coordinates.</p>
+			<p><strong>Implication.</strong> None of these extents should be presented as the study-area boundary. The boundary decision remains open and must be justified from the geological and metallogenic evidence.</p>
+			<p><a href="../data/index.html#corpus">Corpus and evidence register</a></p>
 		</section>
 
-		<section>
-			<p class="quiet">2026-08-13</p>
-			<h2>Spatial validation</h2>
-			<p>Random cross-validation asks whether the model interpolates. Spatial block cross-validation asks whether it transfers. The V9 aggregate AUC is 0.693; the per-block values are what matter. A model that gets 0.75 in four blocks and 0.55 in one has a transfer problem. A model that gets 0.69 everywhere has a ceiling problem. The block size should be set against the deposit spacing and the range of the spatial dependence, not the bounding box.</p>
+		<section id="obs-05">
+			<p class="quiet">OBS-05 · Status: open</p>
+			<h2>Spatial validation tests transfer, not interpolation</h2>
+			<p><strong>Evidence.</strong> The V9 aggregate AUC is 0.693; per-block values differ. Random cross-validation asks whether the model interpolates. Spatial block cross-validation asks whether it transfers.</p>
+			<p><strong>Implication.</strong> Report per-block performance. A model that scores 0.75 in four blocks and 0.55 in one has a transfer problem; a model that scores 0.69 everywhere has a ceiling problem. Block size should follow deposit spacing and the range of spatial dependence, not the bounding box.</p>
 			<p><a href="../data/index.html">Data and maps</a></p>
 		</section>
 	</article>

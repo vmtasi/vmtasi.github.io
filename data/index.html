@@ -24,37 +24,56 @@
 		<p class="kicker">DATA</p>
 		<h1>Data and Maps</h1>
 		<p class="lead">Derived grid, model output, and map figures for the Copperbelt prospectivity project.</p>
-		<p class="quiet">Version 1 · 11 November 2026 · EPSG:32735</p>
+		<p class="quiet">Version 1 · last verified 13 November 2026 · EPSG:32735 for the legacy grid</p>
+
+		<section id="corpus">
+			<h2>Corpus and evidence</h2>
+			<p>Register of the acquired RDC.ROCKS corpus and the extracted evidence. The counts are separated by object: documents, samples, records, observations, candidate entities, confirmed identities, occupied cells and model labels are not interchangeable.</p>
+			<table>
+				<tr><th>Object</th><th>Count</th><th>Status</th></tr>
+				<tr><td>Acquired documents</td><td>118</td><td>7 text layer · 101 OCR · 10 TIFF-only</td></tr>
+				<tr><td>Geochemical measurements</td><td>1,872 rows · 149 samples or units</td><td>6 source documents · 1,583 direct · 289 reproduced</td></tr>
+				<tr><td>Radiometric summaries</td><td>24</td><td>RDC_2406 and RDC_1408</td></tr>
+				<tr><td>Drill holes</td><td>19</td><td>17 collared at Shadirandzoro · 2 Luiswishi without collar</td></tr>
+				<tr><td>USGS inventory</td><td>187 records</td><td>186 in the Daly union · 184 in the historical permissive tracts</td></tr>
+				<tr><td>RDC.ROCKS observations</td><td>147</td><td>Not model positives</td></tr>
+				<tr><td>Candidate entities</td><td>113</td><td>Provisional · not confirmed sites</td></tr>
+				<tr><td>Confirmed cross-source identities</td><td>0</td><td>No independent documentary identity</td></tr>
+				<tr><td>Legacy V14 grid</td><td>1,899 cells</td><td>139 cells with <code>deposit_present = 1</code></td></tr>
+			</table>
+			<p><a href="../assets/data/copperbelt_evidence_register_v1.csv" download>copperbelt_evidence_register_v1.csv</a> · 118 rows · document-level register</p>
+			<p class="quiet">The extracted analytical tables are not republished here because the source documents do not carry a confirmed reuse licence. The register records what exists and where it came from. The 147 RDC.ROCKS observations have not been integrated into a model; they are not model positives.</p>
+		</section>
 
 		<section id="probability">
 			<h2>Predicted probability</h2>
 			<figure>
-				<img src="../assets/maps/copperbelt-probability.png" alt="Predicted probability on the 1,899-cell Copperbelt grid, with known deposit cells shown as black dots.">
-				<figcaption>V9 predicted probability on the 5 km grid. Black dots are cells with at least one known deposit. Colour scale 0–0.25; mean prediction 0.068, prevalence 0.073.</figcaption>
+				<img src="../assets/maps/copperbelt-probability.png" alt="Predicted probability on the 1,899-cell legacy Copperbelt grid, with label-positive cells shown as black dots.">
+				<figcaption>V9 predicted probability on the 5 km legacy grid. Black dots are cells carrying the V13/V14 positive training label. Colour scale 0–0.25; mean prediction 0.068, prevalence 0.073.</figcaption>
 			</figure>
-			<p>The surface is highest in the northern part of the grid, where most known deposits are. It is a screening surface, not a drill target map.</p>
+			<p>The surface is highest in the northern part of the grid, where most label-positive cells lie. It is a screening surface, not a drill target map.</p>
 		</section>
 
 		<section id="domains">
-			<h2>Grid and tectonic domains</h2>
+			<h2>Legacy grid and tectonic domains</h2>
 			<figure>
-				<img src="../assets/maps/copperbelt-domains.png" alt="The 1,899-cell study grid coloured by tectonic domain, with known deposit cells shown as black dots.">
+				<img src="../assets/maps/copperbelt-domains.png" alt="The 1,899-cell legacy modelling grid coloured by tectonic domain, with label-positive cells shown as black dots.">
 				<figcaption>Cells coloured by the Daly et al. domain assigned to the cell centroid. Grey lines are the reconciled domain boundaries. White gaps are cells outside the 1,899-cell modelled grid.</figcaption>
 			</figure>
-			<p>The grid is the support of the claim, not the geological boundary. The domain assignment is an interpretation; the boundaries are not facts.</p>
+			<p>The grid is a legacy modelling frame, not the adopted study area. The domain assignment is an interpretation; the boundaries are not facts.</p>
 		</section>
 
 		<section id="coverage">
 			<h2>Aeromagnetic coverage</h2>
 			<figure>
-				<img src="../assets/maps/copperbelt-emag-coverage.png" alt="EMAG2v3 coverage and nodata footprint across the Copperbelt grid, with known deposit cells shown as black dots.">
-				<figcaption>EMAG2v3 coverage (beige) and nodata footprint (grey). Black dots are cells with at least one known deposit. 91 of 139 positive cells fall in the gap.</figcaption>
+				<img src="../assets/maps/copperbelt-emag-coverage.png" alt="EMAG2v3 coverage and nodata footprint across the Copperbelt grid, with label-positive cells shown as black dots.">
+				<figcaption>EMAG2v3 coverage (beige) and nodata footprint (grey). Black dots are cells carrying the V13/V14 positive training label. 91 of 139 positive cells fall in the gap.</figcaption>
 			</figure>
 			<p>819 of 1,899 cells are in the nodata footprint. The coverage boundary is an observation-process boundary, not a geological one.</p>
 		</section>
 
 		<section id="grid">
-			<h2>Grid v1</h2>
+			<h2>Grid v1 (legacy V14 frame)</h2>
 			<p><a href="../assets/data/copperbelt_grid_v1.csv" download>copperbelt_grid_v1.csv</a> · 1,899 rows · 9 fields · 188 KB</p>
 			<table>
 				<tr><th>Field</th><th>Description</th></tr>
@@ -76,12 +95,14 @@
 				<tr><th>Item</th><th>Value</th></tr>
 				<tr><td>CRS</td><td>EPSG:32735 (WGS 84 / UTM zone 35S)</td></tr>
 				<tr><td>Cell size</td><td>5,000 m</td></tr>
-				<tr><td>Grid</td><td>1,899 cells</td></tr>
-				<tr><td>Positive cells</td><td>139 (7.32%)</td></tr>
-				<tr><td>Deposit records</td><td>184</td></tr>
+				<tr><td>Grid</td><td>1,899 cells · legacy V14 modelling frame</td></tr>
+				<tr><td>Legacy label-positive cells</td><td>139 (7.32%)</td></tr>
+				<tr><td>USGS inventory records</td><td>187 total · 184 in historical permissive tracts</td></tr>
+				<tr><td>RDC.ROCKS observations</td><td>147 · 113 candidate entities · 0 confirmed identities</td></tr>
 				<tr><td>EMAG2v3 gap</td><td>819 cells; 91 of 139 positive cells</td></tr>
 				<tr><td>Extent</td><td>280,140–720,140 m E; 8,377,300–8,862,300 m N</td></tr>
-				<tr><td>Model</td><td>V9 spatial model</td></tr>
+				<tr><td>Model</td><td>V9 spatial model (legacy)</td></tr>
+				<tr><td>Study area</td><td>Not adopted; the grid is shown for reference</td></tr>
 				<tr><td>Version</td><td>v1, 11 November 2026</td></tr>
 			</table>
 		</section>
@@ -94,7 +115,7 @@
 				<li>EMAG2v3, NOAA/NCEI: upward-continued magnetic anomaly grid.</li>
 				<li>V9 model output: predicted probability and posterior uncertainty per cell.</li>
 			</ul>
-			<p class="quiet">The 139 positive cells contain at least one known deposit; the 184 deposit records count multiple deposits within a cell. The negative class is “no known deposit,” not “barren.” Derived data are shared for review and reuse; cite this page and the original sources.</p>
+			<p class="quiet">The 139 cells carry the V13/V14 <code>deposit_present</code> label; they are not a count of confirmed sites. The 184 records are USGS inventory records in the historical permissive tracts; the full inventory has 187. Neither count includes the 147 RDC.ROCKS observations, which remain unintegrated. The negative class is “no known deposit,” not “barren.” Derived data are shared for review and reuse; cite this page and the original sources.</p>
 		</section>
 	</article>
 	<footer class="site-footer">

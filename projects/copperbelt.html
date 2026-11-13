@@ -30,16 +30,22 @@
 		</section>
 		<section>
 			<h2>Approach</h2>
-			<p>The project combines GIS-based spatial feature engineering with Bayesian logistic modelling. The study grid contains 1,899 cells; 139 cells contain at least one known deposit. Predictors include distance to lithological contacts, distance to faults, regional Bouguer gravity, lithological classes, and tectonic-domain information derived from the Katangan Basin interpretation of Daly et al.</p>
+			<p>The project combines GIS-based spatial feature engineering with Bayesian logistic modelling. The legacy modelling grid contains 1,899 cells; 139 cells carry a positive label. That grid is a historical modelling frame, not the adopted study area. Predictors include distance to lithological contacts, distance to faults, regional Bouguer gravity, lithological classes, and tectonic-domain information derived from the Katangan Basin interpretation of Daly et al.</p>
 			<p>Model evaluation uses spatial block cross-validation rather than random train/test splitting, because nearby observations are not independent and random splitting can produce overly optimistic estimates of generalization.</p>
 		</section>
 		<section>
 			<h2>What the project taught me</h2>
-			<p>A particularly important result was methodological rather than numerical. Aeromagnetic coverage contained large spatial gaps that coincided with areas containing known deposits. This created a pathway for a model to learn the geometry of survey coverage instead of a geological magnetic signal.</p>
+			<p>A particularly important result was methodological rather than numerical. Aeromagnetic coverage contained large spatial gaps that coincided with areas carrying positive training labels. This created a pathway for a model to learn the geometry of survey coverage instead of a geological magnetic signal.</p>
+		</section>
+		<section>
+			<h2>Evidence status</h2>
+			<p>The current phase is a source-level evidence harvest, not a model update. The acquired corpus contains 118 documents; 1,872 geochemical measurement rows have been extracted from six of them, together with 24 radiometric summaries, 19 drill holes and a 118-row document register. The RDC.ROCKS occurrence set remains 147 observations, 113 provisional candidate entities and 0 confirmed cross-source identities. No RDC.ROCKS observation is a model positive.</p>
+			<p>The study area is not yet decided: the Daly union, the 1,899-cell V14 grid and the five permissive tracts are historical frames, not an adopted boundary.</p>
+			<p><a href="../data/index.html#corpus">Corpus and evidence register</a> · <a href="../lab/index.html">Lab observations</a></p>
 		</section>
 		<section>
 			<h2>Working notes and data</h2>
-			<p><a href="../lab/index.html">Lab notebook</a> · <a href="../data/index.html">Data and maps</a></p>
+			<p><a href="../lab/index.html">Lab observations</a> · <a href="../data/index.html">Data and maps</a></p>
 		</section>
 <footer class="site-footer">
       <div class="contact-line">Van Tasi | <a href="mailto:vanmutundo@gmail.com">vanmutundo@gmail.com</a></div>
